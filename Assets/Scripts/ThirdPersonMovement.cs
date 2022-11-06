@@ -13,6 +13,8 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField] private float jumpForce;
     float turnSmoothVelocity;
     public bool grounded;
+    float horizontal, vertical, jump;
+    bool sprint;
 
     private void Awake()
     {
@@ -24,13 +26,21 @@ public class ThirdPersonMovement : MonoBehaviour
     }
     void Update()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        float jump = Input.GetAxisRaw("Jump");
-        bool sprint = Input.GetKey(KeyCode.LeftShift);
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
+        jump = Input.GetAxisRaw("Jump");
+        sprint = Input.GetKey(KeyCode.LeftShift);
 
 
         Debug.Log(rb);
+        
+    }
+    private void FixedUpdate()
+    {
+        CalculateMovement();
+    }
+    void CalculateMovement()
+    {
         Vector3 direction = new Vector3(horizontal, 0, vertical).normalized; // sets direction as hor and vert and normalizes
 
         if (direction.magnitude >= 0.1f) // if there is an input, move the character
@@ -78,15 +88,7 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             speed = speed * 2;
         }
-    }
-    private void FixedUpdate()
-    {
-        
-    }
-    void CalculateMovement()
-    {
 
-        
     }
 
 }
