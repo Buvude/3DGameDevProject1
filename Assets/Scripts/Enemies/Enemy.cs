@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     enum CurrentState
     {
         Idle,//idle animations might not exist for some creatures
-        Walk,// walk/fly/move
+        Walk,//walk/fly/move
         Attack//trigger for attacking
     }
 
