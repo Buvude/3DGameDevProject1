@@ -10,9 +10,12 @@ public class ThirdPersonMovement : MonoBehaviour
     private float speed;
     [SerializeField] private float turnSmoothTime = 0.1f;
     private Rigidbody rb;
-    [SerializeField] private float jumpForce;
+    [SerializeField] private float jumpForce, jumpCutMultiplier;
+    
     float turnSmoothVelocity;
     public bool grounded;
+    float horizontal, vertical, jump;
+    bool sprint;
 
     private void Awake()
     {
@@ -24,22 +27,30 @@ public class ThirdPersonMovement : MonoBehaviour
     }
     void Update()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        float jump = Input.GetAxisRaw("Jump");
-        bool sprint = Input.GetKey(KeyCode.LeftShift);
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
+        jump = Input.GetAxisRaw("Jump");
+        sprint = Input.GetKey(KeyCode.LeftShift);
 
 
-        Debug.Log(rb);
+        Debug.Log(jump);
+        
+    }
+    private void FixedUpdate()
+    {
+        CalculateMovement();
+    }
+    void CalculateMovement()
+    {
         Vector3 direction = new Vector3(horizontal, 0, vertical).normalized; // sets direction as hor and vert and normalizes
+        float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y; // gets the target angle with math n shit 
+        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime); //makes rotation way smoother
+        transform.rotation = Quaternion.Euler(0f, angle, 0f); // sets rotation
 
-        if (direction.magnitude >= 0.1f) // if there is an input, move the character
+        Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward; // idk movedir makes sure it moves in the rotation of the camera's local rotation. basically turns the rotation into a direction
+        if (direction.magnitude >= 0.1f) // if there is an input, do this shit
         {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y; // gets the target angle with math n shit 
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime); //makes rotation way smoother
-            transform.rotation = Quaternion.Euler(0f, angle, 0f); // sets rotation
 
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward; // idk movedir makes sure it moves in the rotation of the camera's local rotation. basically turns the rotation into a direction
 
             if (grounded && !sprint)
             {
@@ -74,19 +85,15 @@ public class ThirdPersonMovement : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); // jump bitch
             grounded = false;
         }
+        if ( rb.velocity.y > 0 && jump == 0)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, Mathf.Min(rb.velocity.y, jumpForce / jumpCutMultiplier), rb.velocity.z); //if you let go of jump, cut the jump early
+        }
         if (sprint)
         {
             speed = speed * 2;
         }
-    }
-    private void FixedUpdate()
-    {
-        
-    }
-    void CalculateMovement()
-    {
 
-        
     }
 
 }
