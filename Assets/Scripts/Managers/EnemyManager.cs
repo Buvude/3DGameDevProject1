@@ -12,6 +12,9 @@ public class EnemyManager :Manager<EnemyManager>
     public float lowerNoiseBound, upperNoiseBound;// randomness for spawning creatures 
     private bool gameRunning = true;
 
+    [Header("SpawnControll variables")]
+    public float initialRadius;//Radius of first spawn circle controlls mostly how far creatures spawn from you
+    public float secondaryRadius;// adds some randomness to the spawnning so things dont show up in just a cirlce around you Should be atleast half as small as initialrad
 
     [Header("Scaling Variables")]
     private float EconomyIncreasePerWave = 5;// how much more money the Manager has to spawn creatures in with
@@ -33,6 +36,13 @@ public class EnemyManager :Manager<EnemyManager>
         public Vector3 location;
         public GameObject enemy;
     }
+
+    struct Point
+    {
+        public float x;
+        public float y;
+    }
+
     private void Start()
     {
         print(EnemyList.Count);
@@ -69,8 +79,17 @@ public class EnemyManager :Manager<EnemyManager>
                 currentEconomy -= SpawnEnemyList[rand].GetComponent<Enemy>().SpawnCost;
             }
 
-            //location should be somewhere near/far from the plter
+            //generate first random point on a circle
+            float angle = Random.Range(0,1) * Mathf.PI * 2;
+            float x = Mathf.Cos(angle) * initialRadius;
+            float y = Mathf.Sin(angle) * initialRadius;
 
+            Point p;
+            p.x = x;
+            p.y = y;
+
+            // we have our initial point it has no reference of the players location though
+            
 
             //find a location for the enemy 
             //assign the location to the location field of our holder
@@ -89,19 +108,7 @@ public class EnemyManager :Manager<EnemyManager>
             temp.location = Vector3.zero;
         }
 
-
-
-       
-
-
-       
-
-        
-
-
     }
-
-
 
 
     // spawn in a wave
