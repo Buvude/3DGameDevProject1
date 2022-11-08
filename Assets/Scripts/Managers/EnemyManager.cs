@@ -79,7 +79,8 @@ public class EnemyManager :Manager<EnemyManager>
         {
             EnemyHolder waveMonster;
             //find an enemy that fits in our budget
-            int rand = Random.Range(0, EnemyList.Count);//snag a random index of an enemy
+            int rand = Random.Range(0, SpawnEnemyList.Count);//snag a random index of an enemy
+            
             //see if the enemy at that index fits in our budget if it does not remove it from the list
             if(currentEconomy - SpawnEnemyList[rand].GetComponent<Enemy>().SpawnCost < 0)
             {
@@ -151,9 +152,7 @@ public class EnemyManager :Manager<EnemyManager>
         RaycastHit validityCheck;//container for raycast info
         bool hit = Physics.Raycast(finalSpawnPoint+offset, Vector3.down, out validityCheck, 100);//from our potential spawn
 
-        Debug.DrawRay(finalSpawnPoint, Vector3.down, Color.black, 100.0f);
-
-        print(validityCheck.collider.gameObject.name);
+        //can explode if the raycast doesnt hit anything, just extend terrarin far outside of outofBounds
         if(validityCheck.collider.gameObject.CompareTag("Ground"))
         {
             
@@ -181,9 +180,9 @@ public class EnemyManager :Manager<EnemyManager>
     IEnumerator SpawnLoop()
     {
         while (gameRunning)
-        {
-            buildWave();//build our next wave and get that baby in next wave
+        { 
             yield return new WaitForSecondsRealtime(timeInBetweenWaves);//give the playersome time to play the game
+            buildWave();//build our next wave and get that baby in next wave
             spawnWave();// spawn in the next wave
             applyScaling();// all our wave/ enemy scaling happens heereere
             currentEconomy = maxEconomy; //reset the managers monies
