@@ -118,3 +118,4 @@ MonoBehaviour:
   SpawnCost: 1
   pointsForKilling: 2
   isPOG: 1
+  flyingOffset: 10
