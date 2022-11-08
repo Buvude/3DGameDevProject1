@@ -155,10 +155,9 @@ public class EnemyManager :Manager<EnemyManager>
         //can explode if the raycast doesnt hit anything, just extend terrarin far outside of outofBounds
         if(validityCheck.collider.gameObject.CompareTag("Ground"))
         {
-            
+            Vector3 smallOffsetY= new Vector3(0,.5f,0);//add a small y offset so things dont show up in the ground
             //if we hit a ground object spawn there
-            
-            return validityCheck.point;
+            return validityCheck.point + smallOffsetY;
         }
         else
         {

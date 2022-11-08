@@ -36,7 +36,22 @@ public class EyeBall : Enemy
 
         //do a look at the player
 
-        // do something when in range slowly float towards the player? or just float around in a general area who knows I dont
+        //do something when in range slowly float towards the player? or just float around in a general area who knows I dont
+
+        //do a small bobbing animation 
+
+        //do a medium sized slow moving projectile at the player yeah That sounds epic some fun particle effects maybe
+
+
+        //do hard drugs
+
+        //wait no dont do that
+
+        //YESSS DO THE SUBSTANCES
+
+        //...
+
+
 
     }
 
