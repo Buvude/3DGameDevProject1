@@ -5,29 +5,31 @@ using UnityEngine;
 public class EnemyManager :Manager<EnemyManager>
 {
     [Header ("Base Variables")]
-    private float maxEconomy = 10;  //economy is the value that the manager has to spawn in creatures with 
-    private float currentEconomy = 10;  //economy is the value that the manager has to spawn in creatures with 
+    public float maxEconomy;  //economy is the value that the manager has to spawn in creatures with 
+    private float currentEconomy;  //economy is the value that the manager has to spawn in creatures with 
     public float timeInBetweenWaves = 10;//How long in seconds before managers spawns and scales
-    public float radiusOfSpawning = 10; //radius of how far away the manager will spawn creatures from you
-    public float lowerNoiseBound, upperNoiseBound;// randomness for spawning creatures 
-    private bool gameRunning = true;
+   
+   
 
     [Header("SpawnControll variables")]
     public float initialRadius;//Radius of first spawn circle controlls mostly how far creatures spawn from you
     public float secondaryRadius;// adds some randomness to the spawnning so things dont show up in just a cirlce around you Should be atleast half as small as initialrad
 
     [Header("Scaling Variables")]
-    private float EconomyIncreasePerWave = 5;// how much more money the Manager has to spawn creatures in with
-    private float waveTimeScaling = 0;
+    public float EconomyIncreasePerWave = 5;// how much more money the Manager has to spawn creatures in with
+    public float waveTimeScaling = 0;
 
     [Header("Statistic Variables")]
-    public float waveNum;
+    public float waveCount;
     public float enemiesSlain;
 
     [Header("enemies Variables")]
     public List<GameObject> EnemyList;
 
-    
+    //random stuff
+    private bool gameRunning = true;//continues loopy loop of spawns
+    private Transform playerTransform;//used for finding position to spawn enemies
+
     private List<EnemyHolder> enemies = new List<EnemyHolder>();
     private List<EnemyHolder> nextWave = new List<EnemyHolder>();
 
@@ -45,9 +47,23 @@ public class EnemyManager :Manager<EnemyManager>
 
     private void Start()
     {
-        print(EnemyList.Count);
+        currentEconomy = maxEconomy;
+        try{ playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();}
+        catch 
+        {
+            print("No gameobject tagged Player in the scene");
+            throw;
+        }
+
+
+        //testing
+
+        startGame();
+
+
     }
     //calculate the waves enemies and positions
+    //No check for an empty enemy list might be an issue
     public void buildWave(){
 
         
@@ -61,9 +77,10 @@ public class EnemyManager :Manager<EnemyManager>
         //while we have spawn ecconomy to spend spend it to add monsters to the next wave
         while (currentEconomy > 0)
         {
-            EnemyHolder temp;
+            EnemyHolder waveMonster;
             //find an enemy that fits in our budget
-            int rand = Random.Range(1, EnemyList.Count);//snag a random index of an enemy
+            int rand = Random.Range(0, SpawnEnemyList.Count);//snag a random index of an enemy
+            
             //see if the enemy at that index fits in our budget if it does not remove it from the list
             if(currentEconomy - SpawnEnemyList[rand].GetComponent<Enemy>().SpawnCost < 0)
             {
@@ -74,38 +91,23 @@ public class EnemyManager :Manager<EnemyManager>
             else
             {
                 //add one of those suckers to the god damn next wave YEaaaaah
-                temp.enemy = SpawnEnemyList[rand];
+                waveMonster.enemy = SpawnEnemyList[rand];
                 //take the cost of the enemy out of the budget
                 currentEconomy -= SpawnEnemyList[rand].GetComponent<Enemy>().SpawnCost;
             }
 
             //generate first random point on a circle
-            float angle = Random.Range(0,1) * Mathf.PI * 2;
-            float x = Mathf.Cos(angle) * initialRadius;
-            float y = Mathf.Sin(angle) * initialRadius;
-
-            Point p;
-            p.x = x;
-            p.y = y;
-
-            // we have our initial point it has no reference of the players location though
+            Vector3 spawnPoint = findSpawnPoint();
             
+            //assign or legal spawn location to the monster being added to the wave
+            waveMonster.location = spawnPoint;
 
-            //find a location for the enemy 
-            //assign the location to the location field of our holder
-
-            //add the temp holder to next wave
-            temp.location = Vector3.zero;
-
-            
-
-
-            //add an enemy to the next wave as a test
-            nextWave.Add(temp);
+            //add an enemy with location to next wave
+            nextWave.Add(waveMonster);
 
             //empty that baby out 
-            temp.enemy = null;
-            temp.location = Vector3.zero;
+            waveMonster.enemy = null;
+            waveMonster.location = Vector3.zero;
         }
 
     }
@@ -118,18 +120,57 @@ public class EnemyManager :Manager<EnemyManager>
         foreach(EnemyHolder e in nextWave)
         {
             //spawn an enemy from e.enemy at the location e.location
-            
+            Instantiate(e.enemy, e.location, Quaternion.identity);
         }
     }
 
     //Loopy pooy for things
-    private void Update()
+   
+
+
+    //finds a valid spawn point
+    public Vector3 findSpawnPoint()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        
+
+        float angle = Random.Range(0.0f, 1.0f) * Mathf.PI * 2;
+        float z = Mathf.Cos(angle) * initialRadius;
+        float x = Mathf.Sin(angle) * initialRadius;
+
+        Vector3 firstSpawnPoint = new Vector3(playerTransform.position.x + x, 0, playerTransform.position.z + z);
+
+        float angle2 = Random.Range(0.0f, 1.0f) * Mathf.PI * 2;
+        float z2 = Mathf.Cos(angle2) * secondaryRadius;
+        float x2 = Mathf.Sin(angle2) * secondaryRadius;
+
+        Vector3 finalSpawnPoint = new Vector3(firstSpawnPoint.x + x2, 0, firstSpawnPoint.z + z2);
+
+
+        //check if the point is a safe spot to spawn by checking if a raycast from the sky will hit the ground
+        Vector3 offset = new Vector3(0,40,0);//this offset is how high the raycast will shoot down above the player
+
+        RaycastHit validityCheck;//container for raycast info
+        bool hit = Physics.Raycast(finalSpawnPoint+offset, Vector3.down, out validityCheck, 100);//from our potential spawn
+
+        //can explode if the raycast doesnt hit anything, just extend terrarin far outside of outofBounds
+        if(validityCheck.collider.gameObject.CompareTag("Ground"))
         {
-            startGame();//start the gameplay spawning and any other intro stuff we want to add
+            
+            //if we hit a ground object spawn there
+            
+            return validityCheck.point;
         }
+        else
+        {
+            // if we hit something else find a new spawn point
+            finalSpawnPoint = findSpawnPoint();//thats recursion boiiiiii if we have a stack overflow this went infinite and needs a limit
+        }
+       
+       
+        return finalSpawnPoint;
     }
+
+
 
     public void startGame()
     {
@@ -139,20 +180,22 @@ public class EnemyManager :Manager<EnemyManager>
     IEnumerator SpawnLoop()
     {
         while (gameRunning)
-        {
-            buildWave();//build our next wave and get that baby in next wave
+        { 
             yield return new WaitForSecondsRealtime(timeInBetweenWaves);//give the playersome time to play the game
+            buildWave();//build our next wave and get that baby in next wave
             spawnWave();// spawn in the next wave
             applyScaling();// all our wave/ enemy scaling happens heereere
             currentEconomy = maxEconomy; //reset the managers monies
             nextWave.Clear();// clear out nextwave so we have an empty list to build
+            waveCount++;
         }
     }
 
     //handles all the scaling 
     public void applyScaling()
     {
-
+        maxEconomy += EconomyIncreasePerWave;
+        timeInBetweenWaves -= waveTimeScaling;
     }
 
 
