@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 2096341089}
   - component: {fileID: 2096341088}
   - component: {fileID: 2096341087}
-  m_Layer: 6
+  m_Layer: 4
   m_Name: WallTesting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,10 +432,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2813164131429111105, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 2813164131429111110, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -484,6 +480,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 381787232}
+    - target: {fileID: 2813164131429111111, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
+      propertyPath: groundRadius
+      value: 0.01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
 --- !u!1001 &3803471269119598603
@@ -553,17 +553,33 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 363402444}
+    - target: {fileID: 3803471270142660302, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
+      propertyPath: m_YAxis.m_MaxSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3803471270142660302, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
+      propertyPath: m_Orbits.Array.data[0].m_Radius
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3803471270142660302, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
+      propertyPath: m_Orbits.Array.data[2].m_Height
+      value: -4.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3803471270142660302, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
+      propertyPath: m_Orbits.Array.data[2].m_Radius
+      value: 5.29
+      objectReference: {fileID: 0}
     - target: {fileID: 3803471270142660303, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_Name
       value: Third Person Camera
       objectReference: {fileID: 0}
     - target: {fileID: 3803471270246327731, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000017023817
+      value: -0.000000017023828
       objectReference: {fileID: 0}
     - target: {fileID: 3803471270246327731, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000024998064
+      value: 0.0000000024998077
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
