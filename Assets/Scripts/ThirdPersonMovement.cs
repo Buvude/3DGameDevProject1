@@ -50,17 +50,18 @@ public class ThirdPersonMovement : MonoBehaviour
         Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward; // idk movedir makes sure it moves in the rotation of the camera's local rotation. basically turns the rotation into a direction
         if (direction.magnitude >= 0.1f) // if there is an input, do this shit
         {
-            if (/*grounded*//* && */!sprint)
+            if (!sprint)
             {
                 speed = 7f;
                 rb.velocity = new Vector3(moveDir.normalized.x * speed, rb.velocity.y, moveDir.normalized.z * speed); // moves the player. can move while grounded, air movement not implemented.
                 //rb.velocity = new Vector3(horizontal, rb.velocity.y, vertical);
             }
-            if (/*grounded*//* &&*/ sprint)
+            if (sprint)
             {
                 runSpeed = 12f;
                 rb.velocity = new Vector3(moveDir.normalized.x * runSpeed, rb.velocity.y, moveDir.normalized.z * runSpeed);
             }
+
         }
         else if (isGrounded) // if no input, and we are grounded, this means we are sliding to a stop. this is just a scuffed way of making it deccelerate faster. WIP. not perfect by any means. i know how to do this better but im tired it's 2 am im lazy af ill fix it later
         {
@@ -100,5 +101,8 @@ public class ThirdPersonMovement : MonoBehaviour
         jump = Input.GetAxisRaw("Jump");
         sprint = Input.GetKey(KeyCode.LeftShift);
     }
-
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(groundCheck.position, groundRadius);
+    }
 }
