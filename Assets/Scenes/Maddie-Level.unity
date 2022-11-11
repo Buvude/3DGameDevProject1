@@ -627,7 +627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 362f21959686e97499eb85bdcedcb0ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunBarrelPosition: {fileID: 0}
+  gunBarrelPosition: {fileID: 499003790}
   bulletEffect: {fileID: 0}
   pistolBulletDamage: 0
   pistolBulletRange: 0
@@ -745,6 +745,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 138.526, z: 0}
+--- !u!4 &499003790 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6108862003139159213, guid: c9e7bcbb1add2df429d07bf5f356c68f, type: 3}
+  m_PrefabInstance: {fileID: 619640291}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &504262914
 GameObject:
   m_ObjectHideFlags: 0
@@ -1462,15 +1467,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8709763176295177029, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.14528371
+      value: 0.1452837
       objectReference: {fileID: 0}
     - target: {fileID: 8709763176295177029, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1.7386628e-15
+      value: 0.000000014743061
       objectReference: {fileID: 0}
     - target: {fileID: 8709763176295177029, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 2.941068e-16
+      value: -0.0000000021648958
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
@@ -1626,6 +1631,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2813164131429111111, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 499003790}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
 --- !u!1 &1905841141
