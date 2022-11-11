@@ -19,18 +19,18 @@ public class GroundedScript : MonoBehaviour
     {
         
     }
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == ground)
         {
-            player.grounded = true;
+            //player.grounded = true;
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.layer == ground)
         {
-            player.grounded = false;
+            //player.grounded = false;
         }
     }
 }
