@@ -5,11 +5,13 @@ using UnityEngine;
 public class GroundedScript : MonoBehaviour
 {
     public ThirdPersonMovement player;
-    public LayerMask ground;
+    private LayerMask ground;
+    private LayerMask wall;
     // Start is called before the first frame update
     void Start()
     {
         ground = LayerMask.NameToLayer("Ground");
+        wall = LayerMask.NameToLayer("Wall");
     }
 
     // Update is called once per frame
@@ -21,7 +23,14 @@ public class GroundedScript : MonoBehaviour
     {
         if (other.gameObject.layer == ground)
         {
-            player.grounded = true;
+            //player.grounded = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == ground)
+        {
+            //player.grounded = false;
         }
     }
 }
