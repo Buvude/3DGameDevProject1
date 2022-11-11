@@ -19,7 +19,6 @@ public class GroundedScript : MonoBehaviour
     {
         
     }
-    
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.layer == ground)
