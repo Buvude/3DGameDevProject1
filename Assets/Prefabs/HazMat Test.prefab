@@ -114,12 +114,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curHealth: 0
   maxHealth: 1
-  range: 3
+  range: 20
   damage: 4
   speed: 6
+  aggroRange: 40
   SpawnCost: 3
   pointsForKilling: 2
   isPOG: 1
+  wanderRadius: 30
+  wanderTimer: 3
 --- !u!195 &4157609000632608379
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -129,7 +132,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 4305821330491705308}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1.3
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -141,4 +144,4 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 2

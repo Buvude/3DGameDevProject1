@@ -10,26 +10,15 @@ public class Enemy : MonoBehaviour
     public float range;
     public float damage;
     public float speed;
-    private CurrentState state;
+    public float aggroRange;
+    
 
     [Header("GAMER STATS")]
     public float SpawnCost;// cost for the game manager to spawn one of these in
     public float pointsForKilling;
     public bool isPOG = true;
 
-    enum CurrentState
-    {
-        Idle,//idle animations might not exist for some creatures
-        Walk,//walk/fly/move
-        Attack//trigger for attacking
-    }
-
-    private void Start()
-    {
-        //enemies start idling when they arrive
-        state = CurrentState.Idle;
-    }
-
+  
 
     public void takeDamage(float dam)
     {
@@ -37,7 +26,7 @@ public class Enemy : MonoBehaviour
         die();
     }
 
-    public void attack()
+    virtual public void attack()
     {
 
     }
