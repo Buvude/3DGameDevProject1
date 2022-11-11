@@ -12,17 +12,13 @@ public class HazmatEnemy : Enemy
     private Transform target;
     private float timer;
 
+    private bool canAttack;
 
-    [Tooltip("Position we want to hit")]
-    public Vector3 targetPos;
-
-    [Tooltip("Horizontal speed, in units/sec")]
-    public float projectileSpeed = 10;
-
-    [Tooltip("How high the arc should be, in units")]
-    public float arcHeight = 1;
+   
 
     private State currentState;
+
+    public GameObject attackProjectile;
 
     enum State
     {
@@ -30,16 +26,12 @@ public class HazmatEnemy : Enemy
         chasing,
         attacking
     }
-
-
-    private void Start()
+    //initilizations 
+    void OnEnable()
     {
         playerLocation = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
-    }
-
-    void OnEnable()
-    {
+        canAttack = true;
         currentState = State.wandering;
         timer = wanderTimer;
     }
@@ -93,8 +85,11 @@ public class HazmatEnemy : Enemy
         float distanceToPlayer = Vector3.Distance(transform.position, playerLocation.position);
         if (distanceToPlayer <= range)
         {
-            //do attack grenade toss type of attack
-            
+            if (canAttack)
+            {
+                Instantiate(attackProjectile, transform.position, Quaternion.identity);
+                canAttack = !canAttack;
+            }
         }
         else
         {
@@ -102,6 +97,8 @@ public class HazmatEnemy : Enemy
             currentState = State.chasing;
         }
     }
+
+  
 
     private void wander()
     {
