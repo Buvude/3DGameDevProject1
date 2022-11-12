@@ -29,12 +29,24 @@ public class InventoryManager : MonoBehaviour
         if (other.gameObject.layer == mapItem)
         {
             MapPickup();
+            Destroy(other.gameObject);
+        }
+        else if (other.gameObject.layer == enemyDrop)
+        {
+            EnemyDropPickup();
+            Destroy(other.gameObject);
         }
     }
 
     public void MapPickup()
     {
-
+        mapNum++;
+        UpdateInventoryText();
+    }
+    public void EnemyDropPickup()
+    {
+        eDropNum++;
+        UpdateInventoryText();
     }
 
     public void UpdateInventoryText()
