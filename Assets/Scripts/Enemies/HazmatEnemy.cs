@@ -8,10 +8,12 @@ public class HazmatEnemy : Enemy
     private Transform playerLocation;
     private NavMeshAgent agent;
     public float wanderRadius;
-    public float wanderTimer;
+    public float wanderTime;
     private Transform target;
     private float timer;
 
+    private float attackTimer;
+    public float attackCooldown = 2.0f;
     private bool canAttack;
 
    
@@ -33,7 +35,8 @@ public class HazmatEnemy : Enemy
         agent = GetComponent<NavMeshAgent>();
         canAttack = true;
         currentState = State.wandering;
-        timer = wanderTimer;
+        timer = wanderTime;
+        attackTimer = attackCooldown;
     }
 
 
@@ -85,10 +88,12 @@ public class HazmatEnemy : Enemy
         float distanceToPlayer = Vector3.Distance(transform.position, playerLocation.position);
         if (distanceToPlayer <= range)
         {
-            if (canAttack)
+            attackTimer += Time.deltaTime;
+            if (canAttack&& attackTimer>=attackCooldown)
             {
                 Instantiate(attackProjectile, transform.position, Quaternion.identity);
-                canAttack = !canAttack;
+                //canAttack = !canAttack;
+                attackTimer = 0;
             }
         }
         else
@@ -104,7 +109,7 @@ public class HazmatEnemy : Enemy
     {
 
         timer += Time.deltaTime;
-        if (timer >= wanderTimer)
+        if (timer >= wanderTime)
         {
             Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
             agent.SetDestination(newPos);
