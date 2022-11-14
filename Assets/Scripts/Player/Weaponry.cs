@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Weaponry : MonoBehaviour
 {
@@ -9,26 +9,26 @@ public class Weaponry : MonoBehaviour
 
     public Transform gunBarrelPosition;
     public ParticleSystem bulletEffect;
+    public ParticleSystem ShotGunEffect;
 
     [Header("Revolver stats")]
     public float pistolBulletDamage;
     public float pistolBulletRange;
-    public float pistolMaxAmmo,pistolCurrentAmmo;
+    public float pistolMaxAmmo, pistolCurrentAmmo;
     public float pistolReloadSpeed;
 
-    private bool pistolReloading= false;
+    private bool pistolReloading = false;
 
     [Header("Shotgun stats")]
     public float knockBackPower;
-
-    //ray from the camera shoots out detects anything hit at the moment
 
 
     // Start is called before the first frame update
     void Start()
     {
-       pistolCurrentAmmo = pistolMaxAmmo;
-       cameraTransform = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
+ 
+        pistolCurrentAmmo = pistolMaxAmmo;
+        cameraTransform = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -36,15 +36,15 @@ public class Weaponry : MonoBehaviour
     {
         pistol();
         shotGun();
-      
+
     }
-    
+
     public void shotGun()
     {
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             //do a cone attack thing
-            print("BBOOOOMM");
+            ShotGunEffect.Play();
             //do a knock back on my baby boy self
             Rigidbody playerRigidBody = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
             playerRigidBody.AddForce(-cameraTransform.forward * knockBackPower, ForceMode.Impulse);
@@ -52,7 +52,6 @@ public class Weaponry : MonoBehaviour
 
 
     }
-
 
     public void pistol()
     {
@@ -78,7 +77,7 @@ public class Weaponry : MonoBehaviour
                 }
             }
 
-           pistolCurrentAmmo--;
+            pistolCurrentAmmo--;
 
         }
 
@@ -90,8 +89,8 @@ public class Weaponry : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if(hitTarget.collider != null)
-        Gizmos.DrawWireSphere(hitTarget.point, .5f);
+        if (hitTarget.collider != null)
+            Gizmos.DrawWireSphere(hitTarget.point, .5f);
     }
     IEnumerator Reload()
     {

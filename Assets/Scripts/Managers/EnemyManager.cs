@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager :Manager<EnemyManager>
+public class EnemyManager : Manager<EnemyManager>
 {
-    [Header ("Base Variables")]
+    [Header("Base Variables")]
     public float maxEconomy;  //economy is the value that the manager has to spawn in creatures with 
     private float currentEconomy;  //economy is the value that the manager has to spawn in creatures with 
     public float timeInBetweenWaves = 10;//How long in seconds before managers spawns and scales
-   
-   
+
+
 
     [Header("SpawnControll variables")]
     public float initialRadius;//Radius of first spawn circle controlls mostly how far creatures spawn from you
@@ -48,8 +48,8 @@ public class EnemyManager :Manager<EnemyManager>
     private void Start()
     {
         currentEconomy = maxEconomy;
-        try{ playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();}
-        catch 
+        try { playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>(); }
+        catch
         {
             print("No gameobject tagged Player in the scene");
             throw;
@@ -64,9 +64,10 @@ public class EnemyManager :Manager<EnemyManager>
     }
     //calculate the waves enemies and positions
     //No check for an empty enemy list might be an issue
-    public void buildWave(){
+    public void buildWave()
+    {
 
-        
+
         List<GameObject> SpawnEnemyList = new List<GameObject>();
         // attempt to duplicate our enemy list so we can remove things from it when theyre too expensive
         EnemyList.ForEach((item) =>
@@ -80,9 +81,9 @@ public class EnemyManager :Manager<EnemyManager>
             EnemyHolder waveMonster;
             //find an enemy that fits in our budget
             int rand = Random.Range(0, SpawnEnemyList.Count);//snag a random index of an enemy
-            
+
             //see if the enemy at that index fits in our budget if it does not remove it from the list
-            if(currentEconomy - SpawnEnemyList[rand].GetComponent<Enemy>().SpawnCost < 0)
+            if (currentEconomy - SpawnEnemyList[rand].GetComponent<Enemy>().SpawnCost < 0)
             {
                 //remove it from possible enemies to spawn
                 SpawnEnemyList.RemoveAt(rand);
@@ -98,7 +99,7 @@ public class EnemyManager :Manager<EnemyManager>
 
             //generate first random point on a circle
             Vector3 spawnPoint = findSpawnPoint();
-            
+
             //assign or legal spawn location to the monster being added to the wave
             waveMonster.location = spawnPoint;
 
@@ -114,10 +115,10 @@ public class EnemyManager :Manager<EnemyManager>
 
 
     // spawn in a wave
-    public void spawnWave() 
+    public void spawnWave()
     {
         //loop through all the enemies and spawn the wave/ could add a little delay for some fun style
-        foreach(EnemyHolder e in nextWave)
+        foreach (EnemyHolder e in nextWave)
         {
             //spawn an enemy from e.enemy at the location e.location
             Instantiate(e.enemy, e.location, Quaternion.identity);
@@ -125,13 +126,13 @@ public class EnemyManager :Manager<EnemyManager>
     }
 
     //Loopy pooy for things
-   
+
 
 
     //finds a valid spawn point
     public Vector3 findSpawnPoint()
     {
-        
+
 
         float angle = Random.Range(0.0f, 1.0f) * Mathf.PI * 2;
         float z = Mathf.Cos(angle) * initialRadius;
@@ -147,15 +148,15 @@ public class EnemyManager :Manager<EnemyManager>
 
 
         //check if the point is a safe spot to spawn by checking if a raycast from the sky will hit the ground
-        Vector3 offset = new Vector3(0,40,0);//this offset is how high the raycast will shoot down above the player
+        Vector3 offset = new Vector3(0, 40, 0);//this offset is how high the raycast will shoot down above the player
 
         RaycastHit validityCheck;//container for raycast info
-        bool hit = Physics.Raycast(finalSpawnPoint+offset, Vector3.down, out validityCheck, 100);//from our potential spawn
+        bool hit = Physics.Raycast(finalSpawnPoint + offset, Vector3.down, out validityCheck, 100);//from our potential spawn
 
         //can explode if the raycast doesnt hit anything, just extend terrarin far outside of outofBounds
-        if(validityCheck.collider.gameObject.CompareTag("Ground"))
+        if (validityCheck.collider.gameObject.CompareTag("Ground"))
         {
-            Vector3 smallOffsetY= new Vector3(0,.5f,0);//add a small y offset so things dont show up in the ground
+            Vector3 smallOffsetY = new Vector3(0, .5f, 0);//add a small y offset so things dont show up in the ground
             //if we hit a ground object spawn there
             return validityCheck.point + smallOffsetY;
         }
@@ -164,8 +165,8 @@ public class EnemyManager :Manager<EnemyManager>
             // if we hit something else find a new spawn point
             finalSpawnPoint = findSpawnPoint();//thats recursion boiiiiii if we have a stack overflow this went infinite and needs a limit
         }
-       
-       
+
+
         return finalSpawnPoint;
     }
 
@@ -179,7 +180,7 @@ public class EnemyManager :Manager<EnemyManager>
     IEnumerator SpawnLoop()
     {
         while (gameRunning)
-        { 
+        {
             yield return new WaitForSecondsRealtime(timeInBetweenWaves);//give the playersome time to play the game
             buildWave();//build our next wave and get that baby in next wave
             spawnWave();// spawn in the next wave

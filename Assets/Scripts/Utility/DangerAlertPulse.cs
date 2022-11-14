@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DangerAlertPulse : MonoBehaviour
@@ -39,7 +37,7 @@ public class DangerAlertPulse : MonoBehaviour
                 ScaleDirection = !ScaleDirection;
             }
         }
-        
+
 
 
 

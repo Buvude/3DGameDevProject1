@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curHealth: 0
-  maxHealth: 1
+  maxHealth: 700
   range: 20
   damage: 4
   speed: 6
@@ -121,11 +121,10 @@ MonoBehaviour:
   SpawnCost: 3
   pointsForKilling: 2
   isPOG: 1
+  damagePopUp: {fileID: 8041029152652835770, guid: 104ab53f4d3e19d41a8548be481e51ef, type: 3}
   wanderRadius: 30
-  wanderTimer: 3
-  targetPos: {x: 0, y: 0, z: 0}
-  projectileSpeed: 10
-  arcHeight: 1
+  wanderTime: 2
+  attackCooldown: 2
   attackProjectile: {fileID: 5879683832163022515, guid: 686a5f653689cd74696bd91769a2b46b, type: 3}
 --- !u!195 &4157609000632608379
 NavMeshAgent:
