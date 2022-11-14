@@ -984,26 +984,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 381787232}
-    - target: {fileID: 4541009124273049639, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4671041786161938296, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
-      propertyPath: mapNumMax
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4671041786161938296, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
-      propertyPath: eDropNumMax
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4671041786161938296, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
       propertyPath: inventorytxt
       value: 
       objectReference: {fileID: 2101604395}
-    - target: {fileID: 8250877285881735832, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.01
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
 --- !u!1001 &3803471269119598603
@@ -1111,11 +1095,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7351735726084953700, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000042758477
+      value: -0.0000000042758477
       objectReference: {fileID: 0}
     - target: {fileID: 7351735726084953700, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -4.6994203e-10
+      value: 4.6994203e-10
       objectReference: {fileID: 0}
     - target: {fileID: 8709763176295177029, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_LocalRotation.w
