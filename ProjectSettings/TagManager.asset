@@ -14,8 +14,8 @@ TagManager:
   - UI
   - Ground
   - Wall
-  - 
-  - 
+  - MapItem
+  - EnemyDropItem
   - 
   - 
   - 
@@ -41,4 +41,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: OnTop
+    uniqueID: 1427303687
     locked: 0
