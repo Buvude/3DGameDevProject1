@@ -69,16 +69,16 @@ public class ThirdPersonMovement : MonoBehaviour
             {
                 if (rb.velocity.x != 0 || rb.velocity.z != 0)
                 {
-                    rb.velocity = new Vector3(0, 0, 0);
+                    rb.velocity = new Vector3(rb.velocity.x / 2, rb.velocity.y, rb.velocity.z / 2);
                 }
             }
         }
         if (rb.velocity.y < 0)
         {
-            force.force = new Vector3(rb.velocity.x, rb.velocity.y * 2, rb.velocity.z); // if player is falling, fall faster
+            force.force = new Vector3(rb.velocity.x, rb.velocity.y * 15, rb.velocity.z); // if player is falling, fall faster
         }
+        //else if (rb.velocity.y > 0 && !isGrounded) force.force = new Vector3(rb.velocity.x, rb.velocity.y * -2, rb.velocity.z);
         else force.force = Vector3.zero;
-
         if (isGrounded && jump != 0)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); // jump bitch
