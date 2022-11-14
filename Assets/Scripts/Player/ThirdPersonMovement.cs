@@ -1,19 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ThirdPersonMovement : MonoBehaviour
 { //there's a weird bug right now where setting the speed and run speed in inspector fucks things up because of some dumb shit idk. for now just change speed and run speed on lines 53 and 59. i hate everything
-    public Transform cam; 
+    public Transform cam;
     public ConstantForce force; // everything is buggy rn but just don't worry about it i'll fix it tomorrow
     private float runSpeed;
     private float speed;
     [SerializeField] private float turnSmoothTime = 0.01f;
     private Rigidbody rb;
     [SerializeField] private float jumpForce, jumpCutMultiplier;
-    
+
     float turnSmoothVelocity;
-   
+
     float horizontal, vertical, jump;
     bool sprint;
     [Header("Ground Detection")]
@@ -84,7 +82,7 @@ public class ThirdPersonMovement : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); // jump bitch
             isGrounded = false;
         }
-        if ( rb.velocity.y > 0 && jump == 0)
+        if (rb.velocity.y > 0 && jump == 0)
         {
             rb.velocity = new Vector3(rb.velocity.x, Mathf.Min(rb.velocity.y, jumpForce / jumpCutMultiplier), rb.velocity.z); //if you let go of jump, cut the jump early
         }
@@ -93,7 +91,7 @@ public class ThirdPersonMovement : MonoBehaviour
             speed = speed * 2;
         }
     }
-    
+
     void GetInput()
     {
         horizontal = Input.GetAxisRaw("Horizontal");

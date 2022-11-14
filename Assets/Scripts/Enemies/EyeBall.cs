@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EyeBall : Enemy
@@ -15,7 +13,7 @@ public class EyeBall : Enemy
         RaycastHit ground;
         Physics.Raycast(transform.position, Vector3.down, out ground, 6000);
 
-        if(ground.collider != null)
+        if (ground.collider != null)
         {
             //find the distance from the ground 
             Vector3 groundPoint = ground.point;
@@ -23,15 +21,15 @@ public class EyeBall : Enemy
             if (distance < flyingOffset - wiggleRoom)
             {
                 // lerp towards height
-                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, 10, transform.position.z),.01f);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, 10, transform.position.z), .01f);
             }
-           
-            else if(distance > flyingOffset + wiggleRoom)
+
+            else if (distance > flyingOffset + wiggleRoom)
             {
                 //liggity lerpy
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, 10, transform.position.z),.01f);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, 10, transform.position.z), .01f);
             }
-                
+
         }
 
         //do a look at the player
@@ -56,6 +54,6 @@ public class EyeBall : Enemy
     }
 
 
-    
+
 
 }

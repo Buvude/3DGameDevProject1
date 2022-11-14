@@ -62,9 +62,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 660a97f185c3e024295fdb75a5803e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minScale: 0.6
-  maxScale: 0.8
-  pulseSpeed: 0.0007
+  minScale: 0.5
+  maxScale: 0.9
+  pulseSpeed: 0.003
 --- !u!1 &5674618960270031917
 GameObject:
   m_ObjectHideFlags: 0

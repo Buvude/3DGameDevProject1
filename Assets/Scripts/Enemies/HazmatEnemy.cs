@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -16,7 +14,7 @@ public class HazmatEnemy : Enemy
     public float attackCooldown = 2.0f;
     private bool canAttack;
 
-   
+
 
     private State currentState;
 
@@ -37,6 +35,7 @@ public class HazmatEnemy : Enemy
         currentState = State.wandering;
         timer = wanderTime;
         attackTimer = attackCooldown;
+        curHealth = maxHealth;
     }
 
 
@@ -80,7 +79,7 @@ public class HazmatEnemy : Enemy
         }
 
 
-       
+
     }
 
     override public void attack()
@@ -89,7 +88,7 @@ public class HazmatEnemy : Enemy
         if (distanceToPlayer <= range)
         {
             attackTimer += Time.deltaTime;
-            if (canAttack&& attackTimer>=attackCooldown)
+            if (canAttack && attackTimer >= attackCooldown)
             {
                 Instantiate(attackProjectile, transform.position, Quaternion.identity);
                 //canAttack = !canAttack;
@@ -103,7 +102,7 @@ public class HazmatEnemy : Enemy
         }
     }
 
-  
+
 
     private void wander()
     {
@@ -117,7 +116,7 @@ public class HazmatEnemy : Enemy
         }
 
         // see if the player is withing aggro range if so set to chase;
-        float distanceFromPlayer =Vector3.Distance(transform.position, playerLocation.position);
+        float distanceFromPlayer = Vector3.Distance(transform.position, playerLocation.position);
         if (distanceFromPlayer <= aggroRange)
             currentState = State.chasing;
     }
