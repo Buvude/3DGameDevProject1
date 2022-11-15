@@ -4,6 +4,7 @@ public class ThirdPersonMovement : MonoBehaviour
 { //there's a weird bug right now where setting the speed and run speed in inspector fucks things up because of some dumb shit idk. for now just change speed and run speed on lines 53 and 59. i hate everything
     public Transform cam;
     public ConstantForce force; // everything is buggy rn but just don't worry about it i'll fix it tomorrow
+    public Grappling grappleScript;
     private float runSpeed;
     private float speed;
     [SerializeField] private float turnSmoothTime = 0.01f;
@@ -42,6 +43,7 @@ public class ThirdPersonMovement : MonoBehaviour
     }
     void CalculateMovement()
     {
+        //if (grappleScript.activeGrapple) return;
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized; // sets direction as hor and vert and normalizes
         float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y; // gets the target angle with math n shit 
         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle - Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg, ref turnSmoothVelocity, turnSmoothTime); //easiest way to get strafing working is to just reverse the atan in the rotation damping itself
