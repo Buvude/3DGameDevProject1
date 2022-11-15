@@ -5,11 +5,10 @@ public class ThirdPersonMovement : MonoBehaviour
     public Transform cam;
     public ConstantForce force; // everything is buggy rn but just don't worry about it i'll fix it tomorrow
     public Grappling grappleScript;
-    private float runSpeed;
-    private float speed;
+    private PlayerStats stats;
     [SerializeField] private float turnSmoothTime = 0.01f;
     private Rigidbody rb;
-    [SerializeField] private float jumpForce, jumpCutMultiplier;
+    [SerializeField] private float jumpCutMultiplier;
 
     float turnSmoothVelocity;
 
@@ -28,6 +27,7 @@ public class ThirdPersonMovement : MonoBehaviour
     }
     private void Start()
     {
+        stats = GetComponent<PlayerStats>();
         Cursor.lockState = CursorLockMode.Locked;
     }
     void Update()
@@ -54,14 +54,14 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             if (!sprint)
             {
-                speed = 7f;
-                rb.velocity = new Vector3(moveDir.normalized.x * speed, rb.velocity.y, moveDir.normalized.z * speed); // moves the player. can move while grounded, air movement not implemented.
+                //speed = 7f;
+                rb.velocity = new Vector3(moveDir.normalized.x * stats.playerWalkingSpeed, rb.velocity.y, moveDir.normalized.z * stats.playerWalkingSpeed); // moves the player. can move while grounded, air movement not implemented.
                 //rb.velocity = new Vector3(horizontal, rb.velocity.y, vertical);
             }
             if (sprint)
             {
-                runSpeed = 12f;
-                rb.velocity = new Vector3(moveDir.normalized.x * runSpeed, rb.velocity.y, moveDir.normalized.z * runSpeed);
+                //runSpeed = 12f;
+                rb.velocity = new Vector3(moveDir.normalized.x * stats.playerRunningSpeed, rb.velocity.y, moveDir.normalized.z * stats.playerRunningSpeed);
             }
 
         }
@@ -84,11 +84,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if (rb.velocity.y > 0 && jumpHeld == 0)
         {
-            rb.velocity = new Vector3(rb.velocity.x, Mathf.Min(rb.velocity.y, jumpForce / jumpCutMultiplier), rb.velocity.z); //if you let go of jump, cut the jump early
-        }
-        if (sprint)
-        {
-            speed = speed * 2;
+            rb.velocity = new Vector3(rb.velocity.x, Mathf.Min(rb.velocity.y, stats.playerJumpForce / jumpCutMultiplier), rb.velocity.z); //if you let go of jump, cut the jump early
         }
     }
 
@@ -97,7 +93,7 @@ public class ThirdPersonMovement : MonoBehaviour
         if (isGrounded && jump)
         {
             Debug.Log("Loop entered");
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); // jump bitch
+            rb.AddForce(Vector3.up * stats.playerJumpForce, ForceMode.Impulse); // jump bitch
             isGrounded = false;
         }
     }
