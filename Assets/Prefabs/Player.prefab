@@ -15218,6 +15218,7 @@ GameObject:
   - component: {fileID: 2813164131429111131}
   - component: {fileID: 2057247937}
   - component: {fileID: 3449457695341364853}
+  - component: {fileID: 3449457695341364858}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -15261,7 +15262,6 @@ MonoBehaviour:
   force: {fileID: 2813164131429111131}
   grappleScript: {fileID: 3449457695341364853}
   turnSmoothTime: 0.05
-  jumpForce: 70
   jumpCutMultiplier: 10
   groundCheck: {fileID: 454602662}
   groundRadius: 0.1
@@ -15359,6 +15359,21 @@ MonoBehaviour:
   playerDrag: 1
   playerMass: 5
   activeGrapple: 0
+--- !u!114 &3449457695341364858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2813164131429111105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a90d66ce0571ed48aea46d20231d2eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerWalkingSpeed: 7
+  playerRunningSpeed: 12
+  playerJumpForce: 60
 --- !u!1 &6608434089742347151
 GameObject:
   m_ObjectHideFlags: 0
