@@ -12,7 +12,8 @@ public class ThirdPersonMovement : MonoBehaviour
 
     float turnSmoothVelocity;
 
-    float horizontal, vertical, jump;
+    float horizontal, vertical, jumpHeld;
+    bool jump;
     bool sprint;
     [Header("Ground Detection")]
     [SerializeField] private Transform groundCheck;
@@ -32,7 +33,8 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundRadius, whatIsGround);
         GetInput();
-        Debug.Log(isGrounded);
+        CheckJump();
+        //Debug.Log(isGrounded);
     }
     private void FixedUpdate()
     {
@@ -77,12 +79,8 @@ public class ThirdPersonMovement : MonoBehaviour
         }
         //else if (rb.velocity.y > 0 && !isGrounded) force.force = new Vector3(rb.velocity.x, rb.velocity.y * -2, rb.velocity.z);
         else force.force = Vector3.zero;
-        if (isGrounded && jump != 0)
-        {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); // jump bitch
-            isGrounded = false;
-        }
-        if (rb.velocity.y > 0 && jump == 0)
+
+        if (rb.velocity.y > 0 && jumpHeld == 0)
         {
             rb.velocity = new Vector3(rb.velocity.x, Mathf.Min(rb.velocity.y, jumpForce / jumpCutMultiplier), rb.velocity.z); //if you let go of jump, cut the jump early
         }
@@ -92,11 +90,22 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
+    void CheckJump()
+    {
+        if (isGrounded && jump)
+        {
+            Debug.Log("Loop entered");
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); // jump bitch
+            isGrounded = false;
+        }
+    }
+
     void GetInput()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
-        jump = Input.GetAxisRaw("Jump");
+        jump = Input.GetButtonDown("Jump");
+        jumpHeld = Input.GetAxisRaw("Jump");
         sprint = Input.GetKey(KeyCode.LeftShift);
     }
     private void OnDrawGizmos()
