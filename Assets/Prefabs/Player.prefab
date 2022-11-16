@@ -15370,6 +15370,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a90d66ce0571ed48aea46d20231d2eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHealth: 0
+  CurHealth: 0
+  armor: 0
+  theStat: 0
   playerWalkingSpeed: 7
   playerRunningSpeed: 12
   playerJumpForce: 60
@@ -15400,7 +15404,7 @@ Transform:
   m_GameObject: {fileID: 6608434089742347151}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.01, z: 0}
-  m_LocalScale: {x: 0.87626, y: 1.8186073, z: 1.1903508}
+  m_LocalScale: {x: 0.87626, y: 1.3123252, z: 1.5500747}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2813164131429111110}
