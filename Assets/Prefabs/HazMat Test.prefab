@@ -119,10 +119,11 @@ MonoBehaviour:
   damage: 4
   speed: 6
   aggroRange: 40
-  SpawnCost: 3
+  SpawnCost: 4
   pointsForKilling: 2
   isPOG: 1
   damagePopUp: {fileID: 8041029152652835770, guid: 104ab53f4d3e19d41a8548be481e51ef, type: 3}
+  currentState: 0
   wanderRadius: 30
   wanderTime: 2
   attackCooldown: 2
