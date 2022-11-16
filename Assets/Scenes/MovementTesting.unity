@@ -220,11 +220,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 21606212}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!120 &39140406 stripped
-LineRenderer:
-  m_CorrespondingSourceObject: {fileID: 1408641072, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
-  m_PrefabInstance: {fileID: 3449457695341364846}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &90718222
 GameObject:
   m_ObjectHideFlags: 0
@@ -2733,53 +2728,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 381787232}
     - target: {fileID: 3449457695341364853, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
-      propertyPath: lr
-      value: 
-      objectReference: {fileID: 39140406}
-    - target: {fileID: 3449457695341364853, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 381787232}
-    - target: {fileID: 3449457695341364853, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
       propertyPath: camera
       value: 
       objectReference: {fileID: 381787232}
-    - target: {fileID: 3449457695341364853, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
-      propertyPath: grappleMaxDist
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3449457695341364853, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
-      propertyPath: grappleMinDist
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3449457695341364853, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
-      propertyPath: extendCableSpeed
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 3449457695341364853, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
-      propertyPath: forwardThrustForce
-      value: 3000
-      objectReference: {fileID: 0}
-    - target: {fileID: 3449457695341364853, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
-      propertyPath: grappleJointDamper
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3449457695341364853, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
-      propertyPath: maxGrappleDistance
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 3449457695341364853, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
-      propertyPath: grappleJointStrength
-      value: 4.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3449457695341364853, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
-      propertyPath: grappleJointMassScale
-      value: 4.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3449457695341364853, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
-      propertyPath: horizontalThrustForce
-      value: 2000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
 --- !u!4 &3449457695341364847 stripped
