@@ -15344,21 +15344,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 386ec8dee9d865c48adfcd46beb46f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  gunTip: {fileID: 1207287921}
+  lr: {fileID: 1408641072}
   whatIsGrappleable:
     serializedVersion: 2
     m_Bits: 32768
-  lr: {fileID: 1408641072}
-  rb: {fileID: 2813164131429111109}
+  gunTip: {fileID: 1207287921}
+  camera: {fileID: 0}
   maxGrappleDistance: 100
-  grappleDelayTime: 0.25
-  overshootYAxis: 2
-  grapplingCooldown: 1
-  grappleKey: 325
-  playerDrag: 1
-  playerMass: 5
-  activeGrapple: 0
+  grappleJointStrength: 4.5
+  grappleJointDamper: 7
+  grappleJointMassScale: 4.5
+  horizontalThrustForce: 2000
+  forwardThrustForce: 3000
+  extendCableSpeed: 60
+  isGrappling: 0
 --- !u!114 &3449457695341364858
 MonoBehaviour:
   m_ObjectHideFlags: 0
