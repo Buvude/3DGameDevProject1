@@ -23,14 +23,26 @@ public class Enemy : MonoBehaviour
     public GameObject damagePopUp;
     private GameObject currentDamPop;
 
-    private void Start()
+    public State currentState;
+    public enum State
+    {
+        wandering,
+        chasing,
+        attacking
+    }
+     private void Start()
+    {
+        setup();
+    }
+
+    virtual public void setup()
     {
         collisionEvents = new List<ParticleCollisionEvent>();
     }
 
     private void OnParticleCollision(GameObject other)
     {
-        int numCollisionEvents;
+        int numCollisionEvents=0;
         try
         {
             numCollisionEvents = other.GetComponent<ParticleSystem>().GetCollisionEvents(this.gameObject, collisionEvents);
@@ -54,7 +66,7 @@ public class Enemy : MonoBehaviour
 
     public void takeDamage(float dam)
     {
-        maxHealth -= dam;
+        curHealth -= dam;
         die();
         UpdatePopUp((int)dam);
     }
