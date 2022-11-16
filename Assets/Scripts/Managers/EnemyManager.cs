@@ -82,8 +82,9 @@ public class EnemyManager : Manager<EnemyManager>
             //find an enemy that fits in our budget
             int rand = Random.Range(0, SpawnEnemyList.Count);//snag a random index of an enemy
 
+            int Cost = spawnCost(SpawnEnemyList, rand);
             //see if the enemy at that index fits in our budget if it does not remove it from the list
-            if (currentEconomy - SpawnEnemyList[rand].GetComponent<Enemy>().SpawnCost < 0)
+            if (currentEconomy - Cost < 0)
             {
                 //remove it from possible enemies to spawn
                 SpawnEnemyList.RemoveAt(rand);
@@ -94,7 +95,7 @@ public class EnemyManager : Manager<EnemyManager>
                 //add one of those suckers to the god damn next wave YEaaaaah
                 waveMonster.enemy = SpawnEnemyList[rand];
                 //take the cost of the enemy out of the budget
-                currentEconomy -= SpawnEnemyList[rand].GetComponent<Enemy>().SpawnCost;
+                currentEconomy -= Cost;
             }
 
             //generate first random point on a circle
@@ -112,7 +113,19 @@ public class EnemyManager : Manager<EnemyManager>
         }
 
     }
-
+    public int spawnCost(List<GameObject> li, int i)
+    {
+        if (li[i].GetComponent<Enemy>() != null)
+        {
+            //condition for most non flying enemy
+            return (int)li[i].GetComponent<Enemy>().SpawnCost;
+        }
+        else
+        {
+            //condition for the jellies because fuck me I made them weird
+            return (int)li[i].GetComponentInChildren<Enemy>().SpawnCost;
+        }
+    }
 
     // spawn in a wave
     public void spawnWave()
