@@ -46,22 +46,28 @@ public class ThirdPersonMovement : MonoBehaviour
         //if (grappleScript.activeGrapple) return;
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized; // sets direction as hor and vert and normalizes
         float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y; // gets the target angle with math n shit 
-        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle - Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg, ref turnSmoothVelocity, turnSmoothTime); //easiest way to get strafing working is to just reverse the atan in the rotation damping itself
+        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle - Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg, ref turnSmoothVelocity, turnSmoothTime); //easiest way to get strafing working is to just reverse the atan in the rotation damping itself (i am lazy)
         transform.rotation = Quaternion.Euler(0f, angle, 0f); // sets rotation
 
         Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward; // idk movedir makes sure it moves in the rotation of the camera's local rotation. basically turns the rotation into a direction
         if (direction.magnitude >= 0.1f) // if there is an input, do this shit
         {
-            if (!sprint)
+            if (!sprint && !grappleScript.isGrappling && isGrounded)
             {
                 //speed = 7f;
                 rb.velocity = new Vector3(moveDir.normalized.x * stats.playerWalkingSpeed, rb.velocity.y, moveDir.normalized.z * stats.playerWalkingSpeed); // moves the player. can move while grounded, air movement not implemented.
                 //rb.velocity = new Vector3(horizontal, rb.velocity.y, vertical);
+            } else if (!isGrounded && !grappleScript.isGrappling)
+            {
+                CalculateAirMovement();
             }
-            if (sprint)
+            if (sprint && !grappleScript.isGrappling && isGrounded)
             {
                 //runSpeed = 12f;
                 rb.velocity = new Vector3(moveDir.normalized.x * stats.playerRunningSpeed, rb.velocity.y, moveDir.normalized.z * stats.playerRunningSpeed);
+            } else if (!isGrounded && !grappleScript.isGrappling)
+            {
+                CalculateAirMovement(); 
             }
 
         }
@@ -86,6 +92,48 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             rb.velocity = new Vector3(rb.velocity.x, Mathf.Min(rb.velocity.y, stats.playerJumpForce / jumpCutMultiplier), rb.velocity.z); //if you let go of jump, cut the jump early
         }
+    }
+
+    void CalculateAirMovement()
+    {
+        if (Input.GetKey(KeyCode.D)) // right
+        {
+            rb.AddForce(gameObject.transform.right * grappleScript.horizontalThrustForce * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.A)) // left
+        {
+            rb.AddForce(-gameObject.transform.right * grappleScript.horizontalThrustForce * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.W)) // forward
+        {
+            rb.AddForce(gameObject.transform.forward * grappleScript.forwardThrustForce * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.S)) // backward
+        {
+            rb.AddForce(-gameObject.transform.forward * grappleScript.forwardThrustForce * Time.deltaTime);
+        }
+        if (sprint)
+        {
+            if (Mathf.Abs(rb.velocity.x) > stats.playerRunningSpeed)
+            {
+                rb.velocity = new Vector3(Mathf.Sign(rb.velocity.x) * stats.playerRunningSpeed, rb.velocity.y, rb.velocity.z);
+            }
+            if (Mathf.Abs(rb.velocity.z) > stats.playerRunningSpeed)
+            {
+                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, Mathf.Sign(rb.velocity.z) * stats.playerRunningSpeed);
+            }
+        } else if (!sprint)
+        {
+            if (Mathf.Abs(rb.velocity.x) > stats.playerWalkingSpeed)
+            {
+                rb.velocity = new Vector3(Mathf.Sign(rb.velocity.x) * stats.playerWalkingSpeed, rb.velocity.y, rb.velocity.z);
+            }
+            if (Mathf.Abs(rb.velocity.z) > 12)
+            {
+                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, Mathf.Sign(rb.velocity.z) * stats.playerWalkingSpeed);
+            }
+        }
+
     }
 
     void CheckJump()

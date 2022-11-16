@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 7e0c6dd9ce6872c4a9565b4430dc6780, type: 2}
+--- !u!1 &11470737 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2813164131429111105, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
+  m_PrefabInstance: {fileID: 1920503978}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &346765446
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -304,11 +309,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7351735726084953700, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000008543017
+      value: 0.000000008543017
       objectReference: {fileID: 0}
     - target: {fileID: 7351735726084953700, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000010157436
+      value: -0.0000000010157436
       objectReference: {fileID: 0}
     - target: {fileID: 8709763176295177029, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_LocalPosition.y
@@ -879,6 +884,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1497755684}
+    - target: {fileID: 3449457695341364853, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 1497755684}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
 --- !u!1 &2044842083
@@ -954,6 +963,30 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2813164131429111110, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
   m_PrefabInstance: {fileID: 1920503978}
   m_PrefabAsset: {fileID: 0}
+--- !u!145 &2057247944
+SpringJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11470737}
+  m_ConnectedBody: {fileID: 0}
+  m_ConnectedArticulationBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 0, y: 1.26, z: 6.62}
+  serializedVersion: 2
+  m_Spring: 10
+  m_Damper: 0.2
+  m_MinDistance: 0
+  m_MaxDistance: 0
+  m_Tolerance: 0.025
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
 --- !u!1 &2116854909
 GameObject:
   m_ObjectHideFlags: 0
