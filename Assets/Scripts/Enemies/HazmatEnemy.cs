@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class HazmatEnemy : Enemy
 {
     private Transform playerLocation;
@@ -14,18 +15,9 @@ public class HazmatEnemy : Enemy
     public float attackCooldown = 2.0f;
     private bool canAttack;
 
-
-
-    private State currentState;
-
     public GameObject attackProjectile;
 
-    enum State
-    {
-        wandering,
-        chasing,
-        attacking
-    }
+    
     //initilizations 
     void OnEnable()
     {
@@ -84,6 +76,10 @@ public class HazmatEnemy : Enemy
 
     override public void attack()
     {
+        //turn to face the target
+        Vector3 playerPosIgnoreY = new Vector3(playerLocation.position.x, 0, playerLocation.position.z);
+        transform.LookAt(playerPosIgnoreY);
+
         float distanceToPlayer = Vector3.Distance(transform.position, playerLocation.position);
         if (distanceToPlayer <= range)
         {
