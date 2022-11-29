@@ -108,19 +108,23 @@ public class Grappling : MonoBehaviour
         rb.AddForce(directionToPoint.normalized * forwardThrustForce * Time.deltaTime);
 
         float distanceFromPoint = Vector3.Distance(transform.position, grapplePoint); // constantly update the distance from point to pull us further into the point
-
-        joint.maxDistance = distanceFromPoint * grappleMaxDist;
-        joint.minDistance = distanceFromPoint * grappleMinDist;
+        if (joint != null)
+        {
+            joint.maxDistance = distanceFromPoint * grappleMaxDist;
+            joint.minDistance = distanceFromPoint * grappleMinDist;
+        }
+        
+        
 
 
         //extend cable with E (idk if we'll keep this in final but we could)
-        if (Input.GetKey(KeyCode.E))
+/*        if (Input.GetKey(KeyCode.E))
         {
             float extendedDistanceFromPoint = Vector3.Distance(transform.position, grapplePoint) + extendCableSpeed;
 
             joint.maxDistance = extendedDistanceFromPoint * grappleMaxDist;
             joint.minDistance = extendedDistanceFromPoint * grappleMinDist;
-        }
+        }*/
 
     }
 }

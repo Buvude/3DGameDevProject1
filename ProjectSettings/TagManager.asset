@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - EnemyProjectile
   - JellyFish
+  - melee
+  - meleePivot
   layers:
   - Default
   - TransparentFX
