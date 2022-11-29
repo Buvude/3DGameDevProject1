@@ -33,7 +33,7 @@ public class MeleeAttack : MonoBehaviour
 
     void Attack(float angle)
     {
-        //This method rotates the character when you move in a certain direction.
+        //This method rotates the weapon
         Quaternion newQuaternion = new Quaternion();
         newQuaternion.eulerAngles = new Vector3(transform.localRotation.x, angle, transform.localRotation.z);
 
