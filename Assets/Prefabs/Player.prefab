@@ -15351,12 +15351,12 @@ MonoBehaviour:
   gunTip: {fileID: 1207287921}
   camera: {fileID: 0}
   maxGrappleDistance: 100
-  grappleJointStrength: 4.5
-  grappleJointDamper: 7
+  grappleJointStrength: 20
+  grappleJointDamper: 2
   grappleJointMassScale: 4.5
   horizontalThrustForce: 2000
   forwardThrustForce: 3000
-  extendCableSpeed: 60
+  extendCableSpeed: 1000
   isGrappling: 0
 --- !u!114 &3449457695341364858
 MonoBehaviour:
@@ -15374,8 +15374,8 @@ MonoBehaviour:
   CurHealth: 0
   armor: 0
   theStat: 0
-  playerWalkingSpeed: 7
-  playerRunningSpeed: 12
+  playerWalkingSpeed: 10
+  playerRunningSpeed: 15
   playerJumpForce: 60
 --- !u!1 &6608434089742347151
 GameObject:
@@ -15404,7 +15404,7 @@ Transform:
   m_GameObject: {fileID: 6608434089742347151}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.01, z: 0}
-  m_LocalScale: {x: 0.87626, y: 1.3123252, z: 1.5500747}
+  m_LocalScale: {x: 0.87626, y: 1.8186073, z: 1.1903508}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2813164131429111110}
