@@ -55,7 +55,7 @@ public class ThirdPersonMovement : MonoBehaviour
             if (!sprint && !grappleScript.isGrappling && isGrounded)
             {
                 //speed = 7f;
-                rb.velocity = new Vector3(moveDir.normalized.x * stats.playerWalkingSpeed, rb.velocity.y, moveDir.normalized.z * stats.playerWalkingSpeed); // moves the player. can move while grounded, air movement not implemented.
+                rb.velocity = new Vector3(moveDir.normalized.x * stats.playerWalkingSpeed, rb.velocity.y, moveDir.normalized.z * stats.playerWalkingSpeed); // moves the player. can move while grounded
                 //rb.velocity = new Vector3(horizontal, rb.velocity.y, vertical);
             } else if (!isGrounded && !grappleScript.isGrappling)
             {
