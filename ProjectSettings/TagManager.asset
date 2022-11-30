@@ -9,6 +9,7 @@ TagManager:
   - JellyFish
   - melee
   - meleePivot
+  - EventManeger
   layers:
   - Default
   - TransparentFX

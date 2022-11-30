@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EventAnimManager : MonoBehaviour
 {
+    public Animator Door;
+    public Camera MainCam, CutsceneCam;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +16,19 @@ public class EventAnimManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void exitOpen()
+    {
+        Time.deltaTime.Equals(0f);
+        MainCam.gameObject.GetComponent<Camera>().enabled = false;
+        CutsceneCam.GetComponent<Camera>().enabled = true;
+        Door.SetTrigger("DoorOpen");
+    }
+    public void exitOpenEndCutscene()
+    {
+        MainCam.gameObject.GetComponent<Camera>().enabled = true;
+        CutsceneCam.GetComponent<Camera>().enabled = false;
+        Time.deltaTime.Equals(.02f);
     }
 }

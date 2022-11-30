@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    private bool triggeredEndingCutscene=false;
+    internal EventAnimManager eAM;
     public TextMeshProUGUI inventorytxt;
     private LayerMask mapItem;
     private LayerMask enemyDrop;
@@ -10,6 +12,8 @@ public class InventoryManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(Time.deltaTime.ToString());
+        eAM = GameObject.FindGameObjectWithTag("EventManeger").GetComponentInChildren<EventAnimManager>();
         mapNum = 0;
         eDropNum = 0;
         UpdateInventoryText();
@@ -20,7 +24,12 @@ public class InventoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (mapNum == mapNumMax && eDropNum == eDropNumMax && triggeredEndingCutscene == false)
+        {
+            triggeredEndingCutscene = true;
+            eAM.exitOpen();
 
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
