@@ -15,4 +15,9 @@ public class EventAnimManager : MonoBehaviour
     {
         
     }
+
+    public void exitOpen()
+    {
+        Time.deltaTime.Equals(0f);
+    }
 }
