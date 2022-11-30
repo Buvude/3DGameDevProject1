@@ -2570,6 +2570,7 @@ MonoBehaviour:
   gunBarrelPosition: {fileID: 499003790}
   bulletEffect: {fileID: 0}
   ShotGunEffect: {fileID: 0}
+  sfxMG: {fileID: 0}
   pistolBulletDamage: 0
   pistolBulletRange: 0
   pistolMaxAmmo: 0
@@ -2603,6 +2604,7 @@ MonoBehaviour:
   gunBarrelPosition: {fileID: 0}
   bulletEffect: {fileID: 0}
   ShotGunEffect: {fileID: 0}
+  sfxMG: {fileID: 0}
   pistolBulletDamage: 0
   pistolBulletRange: 0
   pistolMaxAmmo: 0
@@ -2803,6 +2805,17 @@ Transform:
   m_Father: {fileID: 1419760679}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 138.526, z: 0}
+--- !u!114 &470160087 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2652725561535687812, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
+  m_PrefabInstance: {fileID: 1479028229}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9a72bb99d68bdb49a1dbbbf4c3cf219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &491547866
 GameObject:
   m_ObjectHideFlags: 0
@@ -8375,6 +8388,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2057247937, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
+      propertyPath: sfxMG
+      value: 
+      objectReference: {fileID: 470160087}
     - target: {fileID: 2813164131429111105, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
       propertyPath: m_Name
       value: Player
