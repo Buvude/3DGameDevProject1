@@ -10,6 +10,7 @@ public class Weaponry : MonoBehaviour
     public Transform gunBarrelPosition;
     public ParticleSystem bulletEffect;
     public ParticleSystem ShotGunEffect;
+    public SFXManagerGun sfxMG; //to play Gun SFX
 
     [Header("Revolver stats")]
     public float pistolBulletDamage;
@@ -41,8 +42,10 @@ public class Weaponry : MonoBehaviour
 
     public void shotGun()
     {
+        //on Right Click
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
+            sfxMG.ShotGunFired();
             //do a cone attack thing
             ShotGunEffect.Play();
             //do a knock back on my baby boy self
@@ -64,6 +67,7 @@ public class Weaponry : MonoBehaviour
         //On left click
         if (Input.GetKeyDown(KeyCode.Mouse0) && !pistolReloading)
         {
+            sfxMG.PistolFired();
             bulletEffect.Play();
 
             Enemy target = hitTarget.collider.gameObject.GetComponent<Enemy>();
