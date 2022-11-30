@@ -32,12 +32,12 @@ public class Grappling : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(2))
+        if (Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.Q)) // added q for laptop support frfr
         {
             StartGrapple();
             isGrappling = true;
         }
-        else if (Input.GetMouseButtonUp(2))
+        else if (Input.GetMouseButtonUp(2) || Input.GetKeyUp(KeyCode.Q))
         {
             EndGrapple();
             isGrappling = false;
