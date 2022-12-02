@@ -266,9 +266,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6108862003139159213}
   - component: {fileID: 6108862003139159186}
-  - component: {fileID: 6108862003139159187}
   - component: {fileID: 6108862003139159212}
   - component: {fileID: 1441388205}
+  - component: {fileID: 2041551919032503787}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -301,7 +301,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6108862003139159184}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -337,14 +337,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &6108862003139159187
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6108862003139159184}
-  m_Enabled: 1
 --- !u!114 &6108862003139159212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,7 +344,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6108862003139159184}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
@@ -394,6 +386,14 @@ MonoBehaviour:
   BasePlayer: {fileID: 4214327662734183202}
   bGMPlayer: {fileID: 5419368374992631832}
   FranticBGMPlayer: {fileID: 5159734276037701084}
+--- !u!81 &2041551919032503787
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6108862003139159184}
+  m_Enabled: 1
 --- !u!1 &8702516844844951380
 GameObject:
   m_ObjectHideFlags: 0
