@@ -9,6 +9,8 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField] private float turnSmoothTime = 0.01f;
     private Rigidbody rb;
     [SerializeField] private float jumpCutMultiplier;
+    //float boxScale = .5f;
+    Vector3 groundBox = new Vector3(.5f, .125f, .5f);
 
     float turnSmoothVelocity;
 
@@ -32,7 +34,7 @@ public class ThirdPersonMovement : MonoBehaviour
     }
     void Update()
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundRadius, whatIsGround);
+        CheckGround();
         GetInput();
         CheckJump();
         //Debug.Log(isGrounded);
@@ -154,8 +156,15 @@ public class ThirdPersonMovement : MonoBehaviour
         jumpHeld = Input.GetAxisRaw("Jump");
         sprint = Input.GetKey(KeyCode.LeftShift);
     }
+
+    void CheckGround()
+    { 
+        isGrounded = Physics.CheckBox(groundCheck.position, new Vector3(.5f, .125f, .5f), new Quaternion(0, 0, 0, 0), whatIsGround);
+    }
     private void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(groundCheck.position, groundRadius);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(groundCheck.position, new Vector3(.5f, .125f, .5f) * 2);
     }
+
 }
