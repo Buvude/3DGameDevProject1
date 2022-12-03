@@ -9,11 +9,12 @@ TagManager:
   - JellyFish
   - melee
   - meleePivot
+  - EventManeger
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
   - Ground
