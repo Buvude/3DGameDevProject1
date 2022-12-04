@@ -33,21 +33,29 @@ public class HazmatEnemy : Enemy
 
     private void Update()
     {
-        //simple state machine do different actions based on what state were in
-        switch (currentState)
+        if (paused)
         {
-            case State.wandering:
-                wander();
-                break;
-            case State.chasing:
-                hazmatAI();
-                break;
-            case State.attacking:
-                attack();
-                break;
-            default:
-                break;
+    
         }
+        else
+        {
+            //simple state machine do different actions based on what state were in
+            switch (currentState)
+            {
+                case State.wandering:
+                    wander();
+                    break;
+                case State.chasing:
+                    hazmatAI();
+                    break;
+                case State.attacking:
+                    attack();
+                    break;
+                default:
+                    break;
+            }
+        }
+       
 
     }
 
@@ -73,6 +81,22 @@ public class HazmatEnemy : Enemy
 
 
     }
+    public override void onPauseFunc()
+    {
+        base.onPauseFunc();
+        // Animator aaaaaa = GetComponentInChildren<Animator>();
+        //aaaaaa.speed = 0;
+        agent.SetDestination(transform.position);
+       
+    }
+    public override void UnPauseFunc()
+    {
+        base.UnPauseFunc();
+        // Animator aaaaaa = GetComponentInChildren<Animator>();
+        //aaaaaa.speed = 1;
+        
+    }
+
 
     override public void attack()
     {
