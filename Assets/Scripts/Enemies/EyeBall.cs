@@ -40,11 +40,16 @@ public class EyeBall : Enemy
 
     private void Update()
     {
-        Transform t = transform.parent;
-        RelativePosition = new Vector3(t.position.x, transform.position.y, t.position.z);
+        if (paused)
+        {
+        }
+        else
+        {
+            Transform t = transform.parent;
+            RelativePosition = new Vector3(t.position.x, transform.position.y, t.position.z);
 
-        //simple state machine do different actions based on what state were in
-        switch (currentState)
+            //simple state machine do different actions based on what state were in
+            switch (currentState)
             {
                 case State.wandering:
                     wander();
@@ -58,9 +63,29 @@ public class EyeBall : Enemy
                 default:
                     break;
             }
+        }
+           
+        
+        
 
         
     }
+    public override void onPauseFunc()
+    {
+        base.onPauseFunc();
+        Animator aaaaaa = GetComponentInChildren<Animator>();
+        aaaaaa.speed = 0;
+        agent.SetDestination(transform.parent.position);
+        GetComponent<Hover>().pause();
+    }
+    public override void UnPauseFunc()
+    {
+        base.UnPauseFunc();
+        Animator aaaaaa = GetComponentInChildren<Animator>();
+        aaaaaa.speed = Random.Range(.9f, 1.1f);
+        GetComponent<Hover>().unPause();
+    }
+
 
     //behaviour specific to the Jellyfish
     public void JellyAI()

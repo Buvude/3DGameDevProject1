@@ -17,6 +17,9 @@ public class Enemy : MonoBehaviour
     public float pointsForKilling;
     public bool isPOG = true;
 
+    //controls ability to pause the game
+    public bool paused = false;
+
     [HideInInspector]
     public List<ParticleCollisionEvent> collisionEvents;
 
@@ -33,11 +36,40 @@ public class Enemy : MonoBehaviour
      private void Start()
     {
         setup();
+        //events that listen for game manager
+       
+    }
+    protected virtual void Pause() { 
+        paused = true;
+        onPauseFunc();
+    }
+    protected virtual void UnPause() { 
+        paused = false;
+        UnPauseFunc();
+    }
+
+    virtual public void onPauseFunc()
+    {
+
+    }
+    virtual public void UnPauseFunc()
+    {
+
+    }
+
+
+    private void Update()
+    {
+        if (paused)
+            return;
+        print(paused);
     }
 
     virtual public void setup()
     {
         collisionEvents = new List<ParticleCollisionEvent>();
+        GameManager.Instance.OnPause += Pause;
+        GameManager.Instance.OnUnPause += UnPause;
     }
 
     private void OnParticleCollision(GameObject other)
