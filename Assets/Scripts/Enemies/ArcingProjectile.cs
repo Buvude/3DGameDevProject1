@@ -3,6 +3,7 @@ using UnityEngine;
 public class ArcingProjectile : MonoBehaviour
 {
     public float explosionRadius;
+    private PlayerStats stats;
 
     [Tooltip("Position we want to hit")]
     public Vector3 targetPos;
@@ -20,6 +21,7 @@ public class ArcingProjectile : MonoBehaviour
 
     void Start()
     {
+        stats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         // Cache our start position, which is really the only thing we need
         // (in addition to our current position, and the target).
         startPos = transform.position;
@@ -75,7 +77,9 @@ public class ArcingProjectile : MonoBehaviour
         {
             if (item.gameObject.CompareTag("Player"))
             {
+                stats.takeDamage(10);
                 print("player hit add damage calulation here");
+
             }
         }
 
