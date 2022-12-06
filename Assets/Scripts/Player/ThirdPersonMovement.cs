@@ -142,7 +142,6 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         if (isGrounded && jump)
         {
-            Debug.Log("Loop entered");
             rb.AddForce(Vector3.up * stats.playerJumpForce, ForceMode.Impulse); // jump bitch
             isGrounded = false;
         }
@@ -159,7 +158,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
     void CheckGround()
     { 
-        isGrounded = Physics.CheckBox(groundCheck.position, new Vector3(.5f, .125f, .5f), new Quaternion(0, 0, 0, 0), whatIsGround);
+        isGrounded = Physics.CheckBox(groundCheck.position, new Vector3(.5f, .125f, .5f), /*new Quaternion(0, 0, 0, 0)*/transform.rotation, whatIsGround);
     }
     private void OnDrawGizmos()
     {

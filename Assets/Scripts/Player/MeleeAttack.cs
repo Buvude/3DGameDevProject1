@@ -4,18 +4,35 @@ using UnityEngine;
 
 public class MeleeAttack : MonoBehaviour
 {
+    /// <summary>
+    /// Melee damage is located in the MeleeCol script
+    /// </summary>
     public float startAngle;
     public float endAngle;
     float attackTimer;
     float attackTime = .3f;
+    float attackCoolD = 1f;
+    float attackCooldTimer;
     bool attacking;
-    // Update is called once per frame
+    GameObject sword;
+
+    private void Awake()
+    {
+        sword = GameObject.FindGameObjectWithTag("melee");
+    }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && !attacking)
+        if (attacking)
+        {
+            sword.SetActive(true);
+        }
+        else sword.SetActive(false);
+
+        if (Input.GetKeyDown(KeyCode.E) && !attacking && attackCooldTimer < 0)
         {
             attacking = true;
             attackTimer = attackTime;
+            attackCooldTimer = attackCoolD;
         }
         if (attacking)
         {
@@ -27,6 +44,10 @@ public class MeleeAttack : MonoBehaviour
             }
         }
         else Attack(startAngle);
+        if (!attacking)
+        {
+            attackCooldTimer -= Time.deltaTime;
+        }
 
     }
 
