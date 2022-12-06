@@ -12,6 +12,9 @@ public class Weaponry : MonoBehaviour
     public ParticleSystem ShotGunEffect;
     public SFXManagerGun sfxMG; //to play Gun SFX
 
+    public Transform CamTransform;
+    public Transform WeaponryTransform;
+
     [Header("Revolver stats")]
     public float pistolBulletDamage;
     public float pistolBulletRange;
@@ -22,37 +25,61 @@ public class Weaponry : MonoBehaviour
 
     [Header("Shotgun stats")]
     public float knockBackPower;
+    public float shotGunMaxAmmo, shotGunCurrentAmmo;
+    public float shotGunReloadSpeed;
+   
+    private bool shottyReloading = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
- 
+      
         pistolCurrentAmmo = pistolMaxAmmo;
+        shotGunCurrentAmmo = shotGunMaxAmmo;
         cameraTransform = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        rotateGun();
+
         pistol();
         shotGun();
 
+        GameManager.Instance.updateAmmoUI((int)pistolCurrentAmmo, (int)shotGunCurrentAmmo);
     }
 
     public void shotGun()
     {
+
         //on Right Click
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Mouse1)  && shotGunCurrentAmmo >0)
         {
+            shotGunCurrentAmmo--;
             sfxMG.ShotGunFired();
             //do a cone attack thing
             ShotGunEffect.Play();
             //do a knock back on my baby boy self
             Rigidbody playerRigidBody = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
             playerRigidBody.AddForce(-cameraTransform.forward * knockBackPower, ForceMode.Impulse);
+
+            if (shotGunCurrentAmmo == 0 && !shottyReloading)
+            {
+                StartCoroutine(ShotGunReload());
+            }
         }
 
+
+    }
+
+    //rotates the gun so that shotgun particles launch in the right direction
+    public void rotateGun()
+    {
+        //match gun rotation with camera rotation
+        // transform
+        WeaponryTransform.rotation = cameraTransform.rotation;
 
     }
 
@@ -70,7 +97,11 @@ public class Weaponry : MonoBehaviour
             sfxMG.PistolFired();
             bulletEffect.Play();
 
-            Enemy target = hitTarget.collider.gameObject.GetComponent<Enemy>();
+            pistolCurrentAmmo--;
+            Enemy target = null;
+            // sicko mode null check
+            if (hitTarget.collider.gameObject.GetComponent<Enemy>()!= null) { target = hitTarget.collider.gameObject.GetComponent<Enemy>(); }
+            
             //if the target shot is an enemy
             if (pistolCurrentAmmo > 0)
             {
@@ -81,7 +112,6 @@ public class Weaponry : MonoBehaviour
                 }
             }
 
-            pistolCurrentAmmo--;
 
         }
 
@@ -98,13 +128,21 @@ public class Weaponry : MonoBehaviour
     }
     IEnumerator Reload()
     {
-        print("pistolReloading");
+      
         pistolReloading = true;
         yield return new WaitForSecondsRealtime(pistolReloadSpeed);
         pistolCurrentAmmo = pistolMaxAmmo;
         pistolReloading = false;
-        print("reloaded");
+       
     }
-
+    IEnumerator ShotGunReload()
+    {
+       
+        shottyReloading = true;
+        yield return new WaitForSecondsRealtime(shotGunReloadSpeed);
+        shotGunCurrentAmmo = shotGunMaxAmmo;
+        shottyReloading = false;
+      
+    }
 
 }
