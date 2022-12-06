@@ -34,9 +34,13 @@ public class Grappling : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.Q)) // added q for laptop support frfr
         {
-            StartGrapple();
-
-            isGrappling = true;
+            RaycastHit hit;
+            if (Physics.Raycast(camera.position, camera.forward, out hit, maxGrappleDistance, whatIsGrappleable)) // check if the object is grappleable
+            {
+                StartGrapple();
+                isGrappling = true;
+            }
+            
         }
         else if (Input.GetMouseButtonUp(2) || Input.GetKeyUp(KeyCode.Q))
         {
