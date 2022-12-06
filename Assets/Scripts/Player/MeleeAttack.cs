@@ -7,6 +7,7 @@ public class MeleeAttack : MonoBehaviour
     /// <summary>
     /// Melee damage is located in the MeleeCol script
     /// </summary>
+    Rigidbody rb;
     public float startAngle;
     public float endAngle;
     float attackTimer;
@@ -14,11 +15,13 @@ public class MeleeAttack : MonoBehaviour
     float attackCoolD = 1f;
     float attackCooldTimer;
     bool attacking;
+    bool slowDownVelIfTrue = false;
     GameObject sword;
 
     private void Awake()
     {
         sword = GameObject.FindGameObjectWithTag("melee");
+        rb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
     }
     void Update()
     {
@@ -31,6 +34,7 @@ public class MeleeAttack : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && !attacking && attackCooldTimer < 0)
         {
             attacking = true;
+            slowDownVelIfTrue = true;
             attackTimer = attackTime;
             attackCooldTimer = attackCoolD;
         }
@@ -48,12 +52,18 @@ public class MeleeAttack : MonoBehaviour
         {
             attackCooldTimer -= Time.deltaTime;
         }
+        if (slowDownVelIfTrue)
+        {
+            rb.velocity = new Vector3(rb.velocity.x / 3, rb.velocity.y, rb.velocity.z / 3);
+            slowDownVelIfTrue = false;
+        }
 
     }
 
 
     void Attack(float angle)
     {
+        
         //This method rotates the weapon
         Quaternion newQuaternion = new Quaternion();
         newQuaternion.eulerAngles = new Vector3(transform.localRotation.x, angle, transform.localRotation.z);
