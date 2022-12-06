@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 public class HazmatEnemy : Enemy
 {
+    public EventAnimManager eAM;
     private Transform playerLocation;
     private NavMeshAgent agent;
     public float wanderRadius;
@@ -21,6 +22,8 @@ public class HazmatEnemy : Enemy
     //initilizations 
     void OnEnable()
     {
+        eAM = GameObject.FindGameObjectWithTag("EventManeger").GetComponent<EventAnimManager>();
+        eAM.enemyList.Add(this);
         playerLocation = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
         canAttack = true;
