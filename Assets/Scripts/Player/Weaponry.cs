@@ -86,7 +86,7 @@ public class Weaponry : MonoBehaviour
     public void pistol()
     {
         //ignores the player which is layer of wall type?
-        int layerMask = ~LayerMask.GetMask("Wall");
+        int layerMask = ~LayerMask.GetMask("Default");
         // Debug.DrawRay(cameraTransform.position, cameraTransform.forward * 8000, Color.black, 1);
 
         Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hitTarget, 6000, layerMask);
