@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EventAnimManager : MonoBehaviour
 {
+    public ThirdPersonMovement playerScript;
     public List<Enemy> enemyList = new List<Enemy>();
     public Animator Door;
     public Camera MainCam, CutsceneCam;
@@ -22,6 +23,7 @@ public class EventAnimManager : MonoBehaviour
     {
         foreach (Enemy enemyInstance in enemyList)
         {
+            playerScript.playerPaused = true;
             enemyInstance.paused = true;
         }
     }
@@ -30,6 +32,7 @@ public class EventAnimManager : MonoBehaviour
     {
         foreach (Enemy enemyInstance in enemyList)
         {
+            playerScript.playerPaused = true;
             enemyInstance.paused = false;
         }
     }

@@ -38,10 +38,11 @@ public class ThirdPersonMovement : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.P))
         {
+            Cursor.visible = true;
             eAM.Pause();
-
+            uIScreen.gameObject.SetActive(true);
         }
         CheckGround();
         GetInput();
@@ -60,6 +61,13 @@ public class ThirdPersonMovement : MonoBehaviour
             CalculateMovement();
         }
 
+    }
+    public void unpausePlayer()
+    {
+        uIScreen.SetActive(false);
+        Cursor.visible = false;
+        Cursor.lockState.Equals(true);
+        eAM.Unpause();
     }
     void CalculateMovement()
     {
