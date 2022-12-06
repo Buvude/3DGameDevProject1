@@ -41,6 +41,7 @@ public class ThirdPersonMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             eAM.Pause();
             uIScreen.gameObject.SetActive(true);
         }
@@ -66,7 +67,7 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         uIScreen.SetActive(false);
         Cursor.visible = false;
-        Cursor.lockState.Equals(true);
+        Cursor.lockState = CursorLockMode.None; 
         eAM.Unpause();
     }
     void CalculateMovement()
