@@ -58,12 +58,6 @@ public class Enemy : MonoBehaviour
     }
 
 
-    private void Update()
-    {
-        if (paused)
-            return;
-        print(paused);
-    }
 
     virtual public void setup()
     {
@@ -85,7 +79,7 @@ public class Enemy : MonoBehaviour
             throw;
         }
        
-        print("num hits " + numCollisionEvents);
+        
         // num collision events is shotgun pellets taken to the face
         
         if (numCollisionEvents > 0)
