@@ -6,7 +6,7 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     //Player Stats
-    public PlayerStats stats;
+    private PlayerStats stats;
     //UI Text GameObject
     public GameObject hpTextObj;
     //Text Component
@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        stats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         tmpHpText = hpTextObj.GetComponent<TextMeshProUGUI>();
     }
 

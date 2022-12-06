@@ -7,7 +7,7 @@ public class PlayerStats : MonoBehaviour
 
 
     [Header("Player Stats")]
-    public int MaxHealth,CurHealth;
+    public int MaxHealth = 100,CurHealth;
     public float armor;
     public float theStat;
 
