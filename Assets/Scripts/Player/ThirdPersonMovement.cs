@@ -67,7 +67,7 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         uIScreen.SetActive(false);
         Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.None; 
+        Cursor.lockState = CursorLockMode.Locked; 
         eAM.Unpause();
     }
     void CalculateMovement()

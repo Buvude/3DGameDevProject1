@@ -23,7 +23,7 @@ public class HazmatEnemy : Enemy
     void OnEnable()
     {
         eAM = GameObject.FindGameObjectWithTag("EventManeger").GetComponent<EventAnimManager>();
-        eAM.enemyList.Add(this);
+        /*eAM.enemyList.Add(this);*/
         playerLocation = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
         canAttack = true;

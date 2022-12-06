@@ -119,6 +119,8 @@ public class Enemy : MonoBehaviour
     {
         if (curHealth <= 0)
         {
+            GameManager.Instance.OnPause -= Pause;
+            GameManager.Instance.OnUnPause -= UnPause;
             //update the game manager and send this creature to the shadow realm
             GameObject.Destroy(this.gameObject);
             //spawn some particles maybe
