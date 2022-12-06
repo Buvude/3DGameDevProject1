@@ -9668,11 +9668,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1022974952620047038, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000016942662
+      value: -0.000000016942662
       objectReference: {fileID: 0}
     - target: {fileID: 1022974952620047038, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000030009626
+      value: -0.0000000030009626
       objectReference: {fileID: 0}
     - target: {fileID: 3606681668476164772, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_XDamping
@@ -9848,11 +9848,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8709763176295177029, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000008497223
+      value: -0.000000008497222
       objectReference: {fileID: 0}
     - target: {fileID: 8709763176295177029, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000013461442
+      value: -0.0000000013461439
       objectReference: {fileID: 0}
     - target: {fileID: 8979432947373058269, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_XDamping
@@ -11139,6 +11139,10 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 499003790}
+    - target: {fileID: 4671041786161938296, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
+      propertyPath: mapNumMax
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4671041786161938296, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
       propertyPath: inventorytxt
       value: 

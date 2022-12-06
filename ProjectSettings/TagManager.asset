@@ -10,6 +10,7 @@ TagManager:
   - melee
   - meleePivot
   - EventManeger
+  - Hazmat Dude
   layers:
   - Default
   - TransparentFX
