@@ -22,7 +22,6 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField] private float groundRadius;
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private bool isGrounded;
-    public bool playerPaused = false;
 
     private void Awake()
     {
@@ -42,16 +41,7 @@ public class ThirdPersonMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (playerPaused)
-        {
-            PausePlayer();
-        }
-        else
-        {
-            rb.useGravity = true;
-            CalculateMovement();
-        }
-
+        CalculateMovement();
     }
     void CalculateMovement()
     {
@@ -176,10 +166,5 @@ public class ThirdPersonMovement : MonoBehaviour
         Gizmos.DrawWireCube(groundCheck.position, new Vector3(.5f, .125f, .5f) * 2);
     }
 
-    public void PausePlayer()
-    {
-        rb.velocity = Vector3.zero;
-        force.force = Vector3.zero;
-        rb.useGravity = false;
-    }
+
 }
