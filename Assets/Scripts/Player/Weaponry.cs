@@ -80,7 +80,7 @@ public class Weaponry : MonoBehaviour
         //match gun rotation with camera rotation
         // transform
         WeaponryTransform.rotation = cameraTransform.rotation;
-
+        print("why");
     }
 
     public void pistol()
