@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EventAnimManager : MonoBehaviour
 {
+    public ThirdPersonMovement playerScript;
     public List<Enemy> enemyList = new List<Enemy>();
     public Animator Door;
     public Camera MainCam, CutsceneCam;
@@ -20,18 +21,22 @@ public class EventAnimManager : MonoBehaviour
     }
     public void Pause()
     {
-        foreach (Enemy enemyInstance in enemyList)
-        {
-            enemyInstance.paused = true;
-        }
+        /* foreach (Enemy enemyInstance in enemyList)
+         {
+             playerScript.playerPaused = true;
+             enemyInstance.paused = true;
+         }*/
+        GameManager.Instance.Pause();
     }
 
     public void Unpause()
     {
-        foreach (Enemy enemyInstance in enemyList)
+        /*foreach (Enemy enemyInstance in enemyList)
         {
+            playerScript.playerPaused = true;
             enemyInstance.paused = false;
-        }
+        }*/
+        GameManager.Instance.UnPause();
     }
 
     public void exitOpen()

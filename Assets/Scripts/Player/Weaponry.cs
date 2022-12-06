@@ -29,26 +29,32 @@ public class Weaponry : MonoBehaviour
     public float shotGunReloadSpeed;
    
     private bool shottyReloading = false;
-
+    private bool paused;
 
     // Start is called before the first frame update
     void Start()
     {
-      
+        paused = false;
         pistolCurrentAmmo = pistolMaxAmmo;
         shotGunCurrentAmmo = shotGunMaxAmmo;
         cameraTransform = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>();
+        GameManager.Instance.OnPause += pause;
+        GameManager.Instance.OnUnPause += unpause;
     }
 
     // Update is called once per frame
     void Update()
     {
-        rotateGun();
+        if (!paused)
+        {
+            rotateGun();
 
-        pistol();
-        shotGun();
+            pistol();
+            shotGun();
 
-        GameManager.Instance.updateAmmoUI((int)pistolCurrentAmmo, (int)shotGunCurrentAmmo);
+            GameManager.Instance.updateAmmoUI((int)pistolCurrentAmmo, (int)shotGunCurrentAmmo);
+        }
+ 
     }
 
     public void shotGun()
@@ -143,6 +149,15 @@ public class Weaponry : MonoBehaviour
         shotGunCurrentAmmo = shotGunMaxAmmo;
         shottyReloading = false;
       
+    }
+
+    public void pause()
+    {
+        paused = true;
+    }
+    public void unpause()
+    {
+        paused = false;
     }
 
 }
