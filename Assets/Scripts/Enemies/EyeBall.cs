@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 public class EyeBall : Enemy
 {
+    public EventAnimManager eAM;
     public float flyingOffset;
     [HideInInspector] 
     public float wiggleRoom = .3f;//wiggle room for the offset
@@ -22,6 +23,8 @@ public class EyeBall : Enemy
 
     private void Start()
     {
+        eAM = GameObject.FindGameObjectWithTag("EventManeger").GetComponent<EventAnimManager>();
+        eAM.enemyList.Add(this);
         setup();// do all the setup 
     }
     public override void setup()
