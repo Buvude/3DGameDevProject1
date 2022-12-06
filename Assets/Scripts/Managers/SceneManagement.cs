@@ -52,7 +52,7 @@ public class SceneManagement : MonoBehaviour
 
     public void startGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadSceneAsync(1);
     }
     public void endRun()
     {
