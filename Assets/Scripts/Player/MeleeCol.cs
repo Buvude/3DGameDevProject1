@@ -6,15 +6,7 @@ public class MeleeCol : MonoBehaviour
 {
     // Start is called before the first frame update
     float meleeDamage = 12;
-    private void OnTriggerExit(Collider other)
-    {
-        
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-       // Debug.Log("Hit enemy");
 
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == 3) 

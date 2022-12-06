@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Grappling : MonoBehaviour
 {
+    GameObject currentEnemyGrapped;
     private Rigidbody rb;
     private Transform orientation;
     public LineRenderer lr;
     private Vector3 grapplePoint;
     public LayerMask whatIsGrappleable;
+    public LayerMask whatIsEnemy;
     public Transform gunTip, camera;
     public float maxGrappleDistance;
     private SpringJoint joint;
@@ -23,6 +25,7 @@ public class Grappling : MonoBehaviour
     public float forwardThrustForce;
     public float extendCableSpeed;
     public bool isGrappling;
+    public bool enemyGrappled;
 
     private void Awake()
     {
@@ -32,6 +35,7 @@ public class Grappling : MonoBehaviour
 
     private void Update()
     {
+        //Debug.Log(enemyGrappled);
         if (Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.Q)) // added q for laptop support frfr
         {
             RaycastHit hit;
@@ -40,7 +44,12 @@ public class Grappling : MonoBehaviour
                 StartGrapple();
                 isGrappling = true;
             }
-            
+            if (Physics.Raycast(camera.position, camera.forward, out hit, maxGrappleDistance, whatIsEnemy )) // check if the object is grappleable
+            {
+                Debug.Log("Hello");
+                StartGrapple();
+                isGrappling = true;
+            }
         }
         else if (Input.GetMouseButtonUp(2) || Input.GetKeyUp(KeyCode.Q))
         {
@@ -76,6 +85,24 @@ public class Grappling : MonoBehaviour
             joint.massScale = grappleJointMassScale;
 
             lr.positionCount = 2; 
+        } else if (Physics.Raycast(camera.position, camera.forward, out hit, maxGrappleDistance, whatIsEnemy)) // check if the object is an enemy
+        {
+            enemyGrappled = true;
+            currentEnemyGrapped = hit.transform.gameObject;
+            grapplePoint = currentEnemyGrapped.transform.position;
+            joint = gameObject.AddComponent<SpringJoint>(); // create a spring joint which will act as the grapple
+            joint.autoConfigureConnectedAnchor = false; // we don't want unity to auto configure a joint to attach to
+            joint.connectedAnchor = grapplePoint; // we set ^ ourselves here
+
+            float distanceFromPoint = Vector3.Distance(transform.position, grapplePoint); //gets the initial distance
+            joint.maxDistance = distanceFromPoint * grappleMaxDist; // sets max dist from point
+            joint.minDistance = distanceFromPoint * grappleMinDist;
+
+            joint.spring = grappleJointStrength;
+            joint.damper = grappleJointDamper;
+            joint.massScale = grappleJointMassScale;
+
+            lr.positionCount = 2;
         }
     }
 
@@ -87,6 +114,7 @@ public class Grappling : MonoBehaviour
     }
     private void EndGrapple()
     {
+        enemyGrappled = false;
         lr.positionCount = 0;
         Destroy(joint);
     }
@@ -111,7 +139,18 @@ public class Grappling : MonoBehaviour
 
         Vector3 directionToPoint = grapplePoint - transform.position;
         rb.AddForce(directionToPoint.normalized * forwardThrustForce * Time.deltaTime);
-
+        if (enemyGrappled && currentEnemyGrapped != null)
+        {
+            grapplePoint = currentEnemyGrapped.transform.position;
+        }
+        if (currentEnemyGrapped == null && enemyGrappled)
+        {
+            Debug.Log("Accessed");
+            EndGrapple();
+            isGrappling = false;
+            enemyGrappled = false;
+        }
+        
         float distanceFromPoint = Vector3.Distance(transform.position, grapplePoint); // constantly update the distance from point to pull us further into the point
         if (joint != null)
         {
@@ -119,6 +158,7 @@ public class Grappling : MonoBehaviour
             joint.minDistance = distanceFromPoint * grappleMinDist;
         }
         
+
         
 
 
