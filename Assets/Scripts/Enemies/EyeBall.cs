@@ -40,6 +40,7 @@ public class EyeBall : Enemy
 
     private void Update()
     {
+        GameManager.Instance.Pause();
         if (paused)
         {
         }
