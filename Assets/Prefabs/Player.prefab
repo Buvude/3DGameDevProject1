@@ -5211,7 +5211,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 454602662}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: groundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10114,7 +10114,7 @@ GameObject:
   m_Component:
   - component: {fileID: 694075993}
   - component: {fileID: 694075994}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: meleePivot
   m_TagString: meleePivot
   m_Icon: {fileID: 0}
@@ -15065,7 +15065,8 @@ GameObject:
   - component: {fileID: 1419402872}
   - component: {fileID: 1419402871}
   - component: {fileID: 1419402870}
-  m_Layer: 7
+  - component: {fileID: 308134488}
+  m_Layer: 0
   m_Name: swordThing
   m_TagString: melee
   m_Icon: {fileID: 0}
@@ -15150,6 +15151,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &308134488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419402869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2535b96a51e64945b1c1e2d54b9a820, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1830916587
 GameObject:
   m_ObjectHideFlags: 0
@@ -15412,7 +15425,7 @@ GameObject:
   - component: {fileID: 2057247937}
   - component: {fileID: 3449457695341364853}
   - component: {fileID: 3449457695341364858}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -15565,7 +15578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a90d66ce0571ed48aea46d20231d2eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 20
+  MaxHealth: 100
   CurHealth: 0
   armor: 0
   theStat: 0
@@ -15890,5 +15903,5 @@ MonoBehaviour:
   inventorytxt: {fileID: 0}
   mapNum: 0
   eDropNum: 0
-  mapNumMax: 3
-  eDropNumMax: 3
+  mapNumMax: 1
+  eDropNumMax: 0

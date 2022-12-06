@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+
+
     [Header("Player Stats")]
-    public int MaxHealth,CurHealth;
+    public int MaxHealth = 100,CurHealth;
     public float armor;
     public float theStat;
 
@@ -16,6 +18,10 @@ public class PlayerStats : MonoBehaviour
     public float playerRunningSpeed;
     public float playerJumpForce;
 
+    private void Start()
+    {
+        CurHealth = MaxHealth;
+    }
 
     public void takeDamage(int dam)
     {
