@@ -26,11 +26,15 @@ public class SceneManagement : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                SceneManager.LoadScene(1);
+                startGame();
             }
             else if (Input.GetKeyDown(KeyCode.T))
             {
                 SceneManager.LoadScene(0);
+            }
+            else if (Input.GetKeyDown(KeyCode.Q))
+            {
+                quitGame();
             }
         }
         if (curScene.buildIndex == 1)
@@ -40,5 +44,18 @@ public class SceneManagement : MonoBehaviour
                 SceneManager.LoadScene(2);
             }
         }
+    }
+    public void quitGame()
+    {
+        Application.Quit();
+    }
+
+    public void startGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+    public void endRun()
+    {
+        SceneManager.LoadScene(2);
     }
 }
