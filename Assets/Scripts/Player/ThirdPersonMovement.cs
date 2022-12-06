@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ThirdPersonMovement : MonoBehaviour
 { //there's a weird bug right now where setting the speed and run speed in inspector fucks things up because of some dumb shit idk. for now just change speed and run speed on lines 53 and 59. i hate everything
+    public GameObject uIScreen;
+    public EventAnimManager eAM;
     public Transform cam;
     public ConstantForce force; // everything is buggy rn but just don't worry about it i'll fix it tomorrow
     public Grappling grappleScript;
@@ -30,11 +32,18 @@ public class ThirdPersonMovement : MonoBehaviour
     }
     private void Start()
     {
+        eAM = GameObject.FindGameObjectWithTag("EventManeger").GetComponent<EventAnimManager>();
         stats = GetComponent<PlayerStats>();
         Cursor.lockState = CursorLockMode.Locked;
     }
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Cursor.visible = true;
+            eAM.Pause();
+            uIScreen.gameObject.SetActive(true);
+        }
         CheckGround();
         GetInput();
         CheckJump();
@@ -52,6 +61,13 @@ public class ThirdPersonMovement : MonoBehaviour
             CalculateMovement();
         }
 
+    }
+    public void unpausePlayer()
+    {
+        uIScreen.SetActive(false);
+        Cursor.visible = false;
+        Cursor.lockState.Equals(true);
+        eAM.Unpause();
     }
     void CalculateMovement()
     {
