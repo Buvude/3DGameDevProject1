@@ -23,7 +23,7 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundRadius;
     [SerializeField] private LayerMask whatIsGround;
-    [SerializeField] private bool isGrounded;
+    [SerializeField] public bool isGrounded;
 
     private void Awake()
     {
