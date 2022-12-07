@@ -13,7 +13,7 @@ public class MeleeAttack : MonoBehaviour
     float attackTimer;
     float attackTime = .3f;
     float attackCoolD = 1f;
-    float attackCooldTimer;
+    public float attackCooldTimer;
     bool attacking;
     bool slowDownVelIfTrue = false;
     GameObject sword;

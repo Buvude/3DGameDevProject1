@@ -2262,6 +2262,26 @@ Transform:
   m_Father: {fileID: 1502947303}
   m_RootOrder: 61
   m_LocalEulerAnglesHint: {x: 0, y: 210.544, z: 0}
+--- !u!1 &284212800 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3287486231689055462, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
+  m_PrefabInstance: {fileID: 1656109279}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &284212803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284212800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39ef7f02a7df7574f89d4d2d1ff2a358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animDuration: 0.958
+  hurtTimer: 0
+  tookDmg: 0
 --- !u!1 &326732696
 GameObject:
   m_ObjectHideFlags: 0
@@ -10272,11 +10292,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1022974952620047038, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000016942662
+      value: 0.00000001694265
       objectReference: {fileID: 0}
     - target: {fileID: 1022974952620047038, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000030009626
+      value: 0.0000000030009606
       objectReference: {fileID: 0}
     - target: {fileID: 3606681668476164772, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_XDamping
@@ -10452,11 +10472,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8709763176295177029, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000008502238
+      value: -0.000000014717615
       objectReference: {fileID: 0}
     - target: {fileID: 8709763176295177029, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000013469387
+      value: -0.000000002331589
       objectReference: {fileID: 0}
     - target: {fileID: 8979432947373058269, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_XDamping
@@ -11782,6 +11802,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1419402871, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2057247937, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
       propertyPath: CamTransform
       value: 
