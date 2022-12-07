@@ -33,8 +33,6 @@ public class PlayerAnims : MonoBehaviour
         else animator.SetBool("isMoving", true);
         if (Input.GetKeyDown(KeyCode.E) && !coolDownActive)
         {
-
-            Debug.Log("This better show up in the console or i will kill myself");
             punchTimer = animDuration;
             punching = true;
             animator.SetBool("isPunching", true);
