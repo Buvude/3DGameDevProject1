@@ -12,7 +12,7 @@ public class InventoryManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(Time.deltaTime.ToString());
+        /*Debug.Log(Time.deltaTime.ToString());*/
         eAM = GameObject.FindGameObjectWithTag("EventManeger").GetComponentInChildren<EventAnimManager>();
         mapNum = 0;
         eDropNum = 0;
