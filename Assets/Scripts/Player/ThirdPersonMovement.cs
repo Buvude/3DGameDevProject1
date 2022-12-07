@@ -31,7 +31,7 @@ public class ThirdPersonMovement : MonoBehaviour
     }
     private void Start()
     {
-        eAM = GameObject.FindGameObjectWithTag("EventManeger").GetComponent<EventAnimManager>();
+        //eAM = GameObject.FindGameObjectWithTag("EventManeger").GetComponent<EventAnimManager>();
         stats = GetComponent<PlayerStats>();
         Cursor.lockState = CursorLockMode.Locked;
     }

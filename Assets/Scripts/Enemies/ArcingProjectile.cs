@@ -26,9 +26,19 @@ public class ArcingProjectile : MonoBehaviour
         // (in addition to our current position, and the target).
         startPos = transform.position;
         targetPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
+        targetPos.x += Random.Range(-2, 2);
+        targetPos.z += Random.Range(-2, 2);
+        //targetPos.y = groundPoint();
         spawnedWarning = Instantiate(warningMarker, targetPos, Quaternion.identity);
     }
-
+    //returns the point on the ground where the thrown proj will land 
+    public float groundPoint()
+    {
+        Vector3 skypos = new Vector3(targetPos.x, targetPos.y, targetPos.z + 50);
+        RaycastHit r;
+        Physics.Raycast(skypos, Vector3.down,out r);
+        return r.point.y;
+    }
     void Update()
     {
 
