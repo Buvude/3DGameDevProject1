@@ -5,7 +5,7 @@ using UnityEngine;
 public class EventAnimManager : MonoBehaviour
 {
     public ThirdPersonMovement playerScript;
-    public List<Enemy> enemyList = new List<Enemy>();
+   /* public List<Enemy> enemyList = new List<Enemy>();*/
     public Animator Door;
     public Camera MainCam, CutsceneCam;
     // Start is called before the first frame update
@@ -52,6 +52,6 @@ public class EventAnimManager : MonoBehaviour
         Unpause();
         MainCam.gameObject.GetComponent<Camera>().enabled = true;
         CutsceneCam.GetComponent<Camera>().enabled = false;
-        Time.deltaTime.Equals(.02f);
+        /*Time.deltaTime.Equals(.02f);*/
     }
 }
