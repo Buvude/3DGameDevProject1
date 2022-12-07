@@ -5,8 +5,8 @@ using UnityEngine;
 public class EventAnimManager : MonoBehaviour
 {
     public ThirdPersonMovement playerScript;
-    public List<Enemy> enemyList = new List<Enemy>();
-    public Animator Door;
+/*    public List<Enemy> enemyList = new List<Enemy>();
+*/    public Animator Door;
     public Camera MainCam, CutsceneCam;
     // Start is called before the first frame update
     void Start()

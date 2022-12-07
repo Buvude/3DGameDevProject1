@@ -71,7 +71,7 @@ public class PlayerAnims : MonoBehaviour
 
         if (player.isGrounded == true)
         {
-            Debug.Log("test");
+            /*Debug.Log("test");*/
             animator.SetBool("grounded", true);
         }
         else animator.SetBool("grounded", false);

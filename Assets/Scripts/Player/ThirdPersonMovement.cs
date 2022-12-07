@@ -31,7 +31,7 @@ public class ThirdPersonMovement : MonoBehaviour
     }
     private void Start()
     {
-        //eAM = GameObject.FindGameObjectWithTag("EventManeger").GetComponent<EventAnimManager>();
+        eAM = GameObject.FindGameObjectWithTag("EventManeger").GetComponent<EventAnimManager>();
         stats = GetComponent<PlayerStats>();
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -41,7 +41,7 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            eAM.Pause();
+            GameManager.Instance.Pause();
             uIScreen.gameObject.SetActive(true);
         }
         CheckGround();
@@ -57,8 +57,8 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         uIScreen.SetActive(false);
         Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.None; 
-        eAM.Unpause();
+        Cursor.lockState = CursorLockMode.None;
+        GameManager.Instance.UnPause();
     }
     void CalculateMovement()
     {
