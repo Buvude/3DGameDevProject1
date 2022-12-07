@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-
+    PlayerAnims anim;
 
     [Header("Player Stats")]
     public int MaxHealth = 100,CurHealth;
@@ -21,11 +21,19 @@ public class PlayerStats : MonoBehaviour
     private void Start()
     {
         CurHealth = MaxHealth;
+        anim = FindObjectOfType<PlayerAnims>();
+    }
+    private void Update()
+    {
+        //Debug.Log(anim);
     }
 
     public void takeDamage(int dam)
     {
         CurHealth -= dam;
+        //Debug.Log("Hello");
+        anim.hurtTimer = anim.animDuration;
+        anim.tookDmg = true;
         checkHealth();
     }
 
