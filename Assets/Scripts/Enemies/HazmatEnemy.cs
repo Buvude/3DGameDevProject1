@@ -17,7 +17,7 @@ public class HazmatEnemy : Enemy
     private bool canAttack;
 
     public GameObject attackProjectile;
-
+    public Transform LobStartPos;
     private Animator PizzaManDan;
     //initilizations 
     void OnEnable()
@@ -81,6 +81,7 @@ public class HazmatEnemy : Enemy
         }
         else
         {
+            PizzaManDan.Play("Walking");
             agent.destination = playerLocation.position;
         }
 
@@ -116,7 +117,8 @@ public class HazmatEnemy : Enemy
             attackTimer += Time.deltaTime;
             if (canAttack && attackTimer >= attackCooldown)
             {
-                Instantiate(attackProjectile, transform.position, Quaternion.identity);
+                PizzaManDan.Play("Attack");
+                Instantiate(attackProjectile, LobStartPos.position, Quaternion.identity);
                 //canAttack = !canAttack;
                 attackTimer = 0;
             }
@@ -162,6 +164,8 @@ public class HazmatEnemy : Enemy
     public override void die()
     {
         base.die();
-        PizzaManDan.Play("Death");
+
+        if(curHealth<=0)
+            PizzaManDan.Play("Death");
     }
 }
