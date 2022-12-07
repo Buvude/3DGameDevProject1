@@ -9546,7 +9546,7 @@ MonoBehaviour:
   timeInBetweenWaves: 10
   initialRadius: 80
   secondaryRadius: 20
-  EconomyIncreasePerWave: 1
+  EconomyIncreasePerWave: 2
   waveTimeScaling: 0
   waveCount: 0
   enemiesSlain: 0
@@ -22593,15 +22593,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8709763176295177029, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.1452837
+      value: 0.14528371
       objectReference: {fileID: 0}
     - target: {fileID: 8709763176295177029, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000014743061
+      value: 8.693314e-16
       objectReference: {fileID: 0}
     - target: {fileID: 8709763176295177029, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000021648958
+      value: -3.60311e-17
       objectReference: {fileID: 0}
     - target: {fileID: 8979432947373058269, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_XDamping
