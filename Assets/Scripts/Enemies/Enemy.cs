@@ -31,7 +31,8 @@ public class Enemy : MonoBehaviour
     {
         wandering,
         chasing,
-        attacking
+        attacking,
+        dead
     }
      private void Start()
     {
@@ -115,12 +116,21 @@ public class Enemy : MonoBehaviour
 
     }
 
-    public void die()
+    //removes corpses after a set time
+    IEnumerator GarbageMan()
+    {
+        yield return new WaitForSecondsRealtime(5);
+        Destroy(this.gameObject);
+    }
+
+    virtual public void die()
     {
         if (curHealth <= 0)
         {
-            //update the game manager and send this creature to the shadow realm
-            GameObject.Destroy(this.gameObject);
+            print(curHealth);
+            currentState = State.dead;
+            //update the game manager and send this creature to the shadow realm invoke die after some time method
+            StartCoroutine(GarbageMan());
             //spawn some particles maybe
         }
     }
