@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5378824491693780896}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: group4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7295880074466786241}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: pasted__group5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1972424470061417227}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: group2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 3963682849654836475}
   - component: {fileID: 2304892280818227181}
   - component: {fileID: 3112816324834901012}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: pasted__Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8232635292056413785}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: group6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 419174108686409100}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: pasted__group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8330187436054923189}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: group1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 6155263145665431572}
   - component: {fileID: 2513771110211606911}
   - component: {fileID: 2703005341382385944}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,7 +363,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4059551371337108561}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: group5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -395,7 +395,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4549179586400367894}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: group3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,7 +426,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1613316768155637688}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +458,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7414476616827957035}
   - component: {fileID: 4457949736058152029}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WallPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
