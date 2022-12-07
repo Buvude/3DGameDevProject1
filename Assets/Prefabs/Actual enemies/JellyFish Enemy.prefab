@@ -126,22 +126,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curHealth: 0
-  maxHealth: 18
+  maxHealth: 24
   range: 2
-  damage: 2
+  damage: 5
   speed: 2
-  aggroRange: 20
+  aggroRange: 200
   SpawnCost: 2
   pointsForKilling: 2
   isPOG: 1
   paused: 0
   damagePopUp: {fileID: 8041029152652835770, guid: 104ab53f4d3e19d41a8548be481e51ef, type: 3}
   currentState: 0
+  eAM: {fileID: 0}
   flyingOffset: 9
   wiggleRoom: 0.3
   wanderRadius: 16
   wanderTime: 4
-  attackCooldown: 1
+  attackCooldown: 0.3
   attackProjectile: {fileID: 5033349749803613786, guid: e8170c7cb931a834986fabddf0593142, type: 3}
   RelativePosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1403124176248137697
@@ -188,7 +189,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 0.5
-  m_Speed: 2
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -211,7 +212,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.6
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1403124176988095279
 PrefabInstance:
@@ -380,6 +381,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6095549738645645947, guid: 5b63a351fafb6274db4439ce9280c23a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 86afb3115c8e3114aa3efe8e009bb433, type: 2}
     - target: {fileID: 6905609870639353253, guid: 5b63a351fafb6274db4439ce9280c23a, type: 3}
       propertyPath: m_Layer
       value: 3

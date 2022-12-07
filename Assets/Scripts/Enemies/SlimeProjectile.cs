@@ -13,6 +13,9 @@ public class SlimeProjectile : MonoBehaviour
             //assign damage to the player 
             collision.gameObject.GetComponent<PlayerStats>().takeDamage(SlimeBallDamage);
         }
+        if (collision.gameObject.CompareTag("EnemyProjectile")){
+            return;
+        }
         Destroy(this.gameObject);
     }
 }

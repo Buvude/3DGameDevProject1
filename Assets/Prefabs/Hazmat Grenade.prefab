@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9316fe69b2b620a4183924a774061966, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,6 +98,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionRadius: 3
   targetPos: {x: 0, y: 0, z: 0}
-  speed: 10
+  speed: 15
   arcHeight: 4
   warningMarker: {fileID: 5674618960251315472, guid: c72c7b4f2ee76204c9384f786e1a48d9, type: 3}
