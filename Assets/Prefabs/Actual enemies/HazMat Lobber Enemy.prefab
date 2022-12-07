@@ -119,7 +119,7 @@ MonoBehaviour:
   range: 30
   damage: 10
   speed: 9
-  aggroRange: 90
+  aggroRange: 139
   SpawnCost: 4
   pointsForKilling: 2
   isPOG: 1

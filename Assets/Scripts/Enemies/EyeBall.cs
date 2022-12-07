@@ -23,8 +23,7 @@ public class EyeBall : Enemy
 
     private void Start()
     {
-        eAM = GameObject.FindGameObjectWithTag("EventManeger").GetComponent<EventAnimManager>();
-        eAM.enemyList.Add(this);
+       
         setup();// do all the setup 
     }
     public override void setup()
@@ -163,6 +162,17 @@ public class EyeBall : Enemy
 
         return navHit.position;
     }
-
+    public override void die()
+    {
+        base.die();
+        if (curHealth <= 0)
+        {
+            Animator aaaaaa = GetComponentInChildren<Animator>();
+            aaaaaa.speed = 0;
+            gameObject.layer = 2;
+            gameObject.AddComponent<Rigidbody>();
+        }
+       
+    }
 
 }

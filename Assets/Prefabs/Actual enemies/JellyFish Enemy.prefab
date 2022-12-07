@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curHealth: 0
-  maxHealth: 24
+  maxHealth: 12
   range: 2
   damage: 5
   speed: 2

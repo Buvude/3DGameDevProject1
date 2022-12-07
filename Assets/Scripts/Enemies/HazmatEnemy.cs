@@ -22,8 +22,6 @@ public class HazmatEnemy : Enemy
     //initilizations 
     void OnEnable()
     {
-        eAM = GameObject.FindGameObjectWithTag("EventManeger").GetComponent<EventAnimManager>();
-        eAM.enemyList.Add(this);
         playerLocation = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
         canAttack = true;
@@ -81,7 +79,7 @@ public class HazmatEnemy : Enemy
         }
         else
         {
-            PizzaManDan.Play("Walking");
+            PizzaManDan.Play("Walk");
             agent.destination = playerLocation.position;
         }
 
