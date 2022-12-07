@@ -132,6 +132,9 @@ public class Enemy : MonoBehaviour
             //update the game manager and send this creature to the shadow realm invoke die after some time method
             StartCoroutine(GarbageMan());
             //spawn some particles maybe
+            GameManager.Instance.OnPause -= Pause;
+            GameManager.Instance.OnUnPause -= UnPause;
+
         }
     }
 
