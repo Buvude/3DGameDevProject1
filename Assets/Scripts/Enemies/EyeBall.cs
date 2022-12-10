@@ -165,16 +165,17 @@ public class EyeBall : Enemy
     }
     public override void die()
     {
-        SM.Kill(ScoreManager.EnemyType.JellyFish);
-        base.die();
-        if (curHealth <= 0)
+       
+        
+        if (curHealth <= 0&& currentState != State.dead)
         {
+            SM.Kill(ScoreManager.EnemyType.JellyFish);
             Animator aaaaaa = GetComponentInChildren<Animator>();
             aaaaaa.speed = 0;
             gameObject.layer = 2;
             gameObject.AddComponent<Rigidbody>();
         }
-       
+        base.die();
     }
 
 }
