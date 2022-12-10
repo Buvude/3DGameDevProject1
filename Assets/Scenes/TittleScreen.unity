@@ -715,6 +715,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 100261205705684018, guid: 2ce273897943bbe419cb06d5b3512738, type: 3}
+      propertyPath: jellyFishWorth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100261205705684018, guid: 2ce273897943bbe419cb06d5b3512738, type: 3}
+      propertyPath: hazmatDudesWorth
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9072992544531212945, guid: 2ce273897943bbe419cb06d5b3512738, type: 3}
       propertyPath: m_RootOrder
       value: 5
