@@ -163,10 +163,11 @@ public class HazmatEnemy : Enemy
     }
     public override void die()
     {
-        SM.Kill(ScoreManager.EnemyType.HazmatDude);
-        base.die();
-
-        if(curHealth<=0)
+        if (curHealth <= 0 && currentState != State.dead)
+        {
+            SM.Kill(ScoreManager.EnemyType.HazmatDude);
             PizzaManDan.Play("Death");
+        }
+        base.die();
     }
 }
