@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 public class HazmatEnemy : Enemy
 {
+    public ScoreManager SM;
     public EventAnimManager eAM;
     private Transform playerLocation;
     private NavMeshAgent agent;
@@ -22,6 +23,7 @@ public class HazmatEnemy : Enemy
     //initilizations 
     void OnEnable()
     {
+        SM = GameObject.FindGameObjectWithTag("ScoreSystem").GetComponent<ScoreManager>();
         playerLocation = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
         canAttack = true;
@@ -161,6 +163,7 @@ public class HazmatEnemy : Enemy
     }
     public override void die()
     {
+        SM.Kill(ScoreManager.EnemyType.HazmatDude);
         base.die();
 
         if(curHealth<=0)

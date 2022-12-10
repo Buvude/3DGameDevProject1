@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 public class EyeBall : Enemy
 {
+    public ScoreManager SM;
     public EventAnimManager eAM;
     public float flyingOffset;
     [HideInInspector] 
@@ -23,7 +24,7 @@ public class EyeBall : Enemy
 
     private void Start()
     {
-       
+        SM = GameObject.FindGameObjectWithTag("ScoreSystem").GetComponent<ScoreManager>();
         setup();// do all the setup 
     }
     public override void setup()
@@ -164,6 +165,7 @@ public class EyeBall : Enemy
     }
     public override void die()
     {
+        SM.Kill(ScoreManager.EnemyType.JellyFish);
         base.die();
         if (curHealth <= 0)
         {
