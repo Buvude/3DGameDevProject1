@@ -45,6 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736b450fca5ef2e4b98adccac9e64a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jellyFishKilled: 0
+  hazmatDudesKilled: 0
+  jellyFishWorth: 5
+  hazmatDudesWorth: 3
+  totalScore: 0
+  VictoryWorth: 1000
+  vicotry: 0
 --- !u!114 &8679750814248847145
 MonoBehaviour:
   m_ObjectHideFlags: 0
