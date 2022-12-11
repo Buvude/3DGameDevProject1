@@ -16,6 +16,7 @@ public class SceneManagement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        print("loaded");
         scoMan = GameObject.FindGameObjectWithTag("ScoreSystem").GetComponent<ScoreManager>();
         curScene = SceneManager.GetActiveScene();
         string sceneName = curScene.name;
@@ -25,6 +26,7 @@ public class SceneManagement : MonoBehaviour
 
         }
     }
+    
 
     // Update is called once per frame
     void Update()
@@ -69,6 +71,7 @@ public class SceneManagement : MonoBehaviour
         {
             if (!startedFinalCalc)
             {
+                print("change");
                 startedFinalCalc = true;
                 scoMan.startFinalCalcMethod(Line1, Line2, Line3, Line4);
             }

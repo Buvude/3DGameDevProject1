@@ -12,8 +12,9 @@ public class ScoreManager : MonoBehaviour
         totalScore, VictoryWorth;//total score
     public bool vicotry = false;
     public enum EnemyType { JellyFish, HazmatDude}
-    // Start is called before the first frame update
-    
+
+    TextMeshProUGUI[] tMPArray = new TextMeshProUGUI[4];
+
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -47,18 +48,20 @@ public class ScoreManager : MonoBehaviour
    
     public void startFinalCalcMethod(TextMeshProUGUI Line1, TextMeshProUGUI Line2, TextMeshProUGUI Line3, TextMeshProUGUI Line4)
     {
-        TextMeshProUGUI[] tMPArray = new TextMeshProUGUI[4];
-        tMPArray.SetValue(Line1, 0);
-        tMPArray.SetValue(Line2, 1);
-        tMPArray.SetValue(Line3, 2);
-        tMPArray.SetValue(Line4, 3);
-        StartCoroutine("FinalScorOutput", tMPArray);
+        // TextMeshProUGUI[] tMPArray = new TextMeshProUGUI[4];
+        tMPArray[0] = Line1;//  tMPArray.SetValue(Line1, 0);
+        tMPArray[1] = Line2;//tMPArray.SetValue(Line2, 1);
+        tMPArray[2] = Line3;//.SetValue(Line3, 2);
+        tMPArray[3] = Line4;//tMPArray.SetValue(Line4, 3);
+       StartCoroutine( FinalScoreOutput(tMPArray));
+       
     }
-    IEnumerator FinalScorOutput(TextMeshProUGUI[] ArrayStuff)
+        IEnumerator  FinalScoreOutput(TextMeshProUGUI[] ArrayStuff)
     {
+        ArrayStuff[0].text = "fish are friedns";
         string jellyfish, hazmatDudes, deadOrAlive, finalScore;
-        jellyfish = "You have killed " + jellyFishKilled + "of those jelly fish creatures(*" + jellyFishWorth + ")\t " + (jellyFishKilled * jellyFishWorth) + " points";
-        hazmatDudes = "You have killed " + hazmatDudesKilled + "of those Hazmat dudes(*" + hazmatDudesWorth + ")\t " + (hazmatDudesKilled * hazmatDudesWorth) + " points";
+        jellyfish = "You have killed " + jellyFishKilled + " of those jelly fish creatures(*" + jellyFishWorth + ")\t " + (jellyFishKilled * jellyFishWorth) + " points";
+        hazmatDudes = "You have killed " + hazmatDudesKilled + " of those Hazmat dudes(*" + hazmatDudesWorth + ")\t " + (hazmatDudesKilled * hazmatDudesWorth) + " points";
         if (vicotry)
         {
             /* Image[] temp;
@@ -88,10 +91,11 @@ public class ScoreManager : MonoBehaviour
                     break;
                 }
             }*/
-            print(transform.Find("UI").Find("Death"));
+            
             deadOrAlive = "Unfortunatly you died trying to escape... You do not get any points for this";
         }
         finalScore = "Your final score is...\t" + totalScore;
+        print(ArrayStuff[0].text);
         ArrayStuff[0].text = jellyfish;
         yield return new WaitForSeconds(1f);
         ArrayStuff[1].text = hazmatDudes;

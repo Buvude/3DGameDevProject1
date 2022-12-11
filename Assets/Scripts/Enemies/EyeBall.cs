@@ -120,7 +120,7 @@ public class EyeBall : Enemy
             attackTimer += Time.deltaTime;
             if (canAttack && attackTimer >= attackCooldown)
             {
-                print("d");
+                
                
                 Instantiate(attackProjectile, RelativePosition + Vector3.down/2, Quaternion.identity);
                 //canAttack = !canAttack;
