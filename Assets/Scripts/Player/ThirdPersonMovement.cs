@@ -25,6 +25,12 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] public bool isGrounded;
 
+    private bool reachedMaxWalkAirXSpeed;
+    private bool reachedMaxWalkAirZSpeed;
+    private bool reachedMaxRunAirXSpeed;
+    private bool reachedMaxRunAirZSpeed;
+
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -37,6 +43,7 @@ public class ThirdPersonMovement : MonoBehaviour
     }
     void Update()
     {
+        Debug.Log(rb.velocity.y);
         if (Input.GetKeyDown(KeyCode.P))
         {
             Cursor.visible = true;
@@ -68,7 +75,19 @@ public class ThirdPersonMovement : MonoBehaviour
         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle - Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg, ref turnSmoothVelocity, turnSmoothTime); //easiest way to get strafing working is to just reverse the atan in the rotation damping itself (i am lazy)
         transform.rotation = Quaternion.Euler(0f, angle, 0f); // sets rotation
 
+        if (isGrounded)
+        {
+            reachedMaxWalkAirXSpeed = false;
+            reachedMaxWalkAirZSpeed = false;
+            reachedMaxRunAirXSpeed = false;
+            reachedMaxRunAirZSpeed = false;
+}
+
         Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward; // idk movedir makes sure it moves in the rotation of the camera's local rotation. basically turns the rotation into a direction
+        if (direction.magnitude < .1 && isGrounded) // if there is no input
+        {
+            rb.velocity = new Vector3(0, rb.velocity.y, 0);
+        }
         if (direction.magnitude >= 0.1f) // if there is an input, do this shit
         {
             if (!sprint && !grappleScript.isGrappling && isGrounded)
@@ -103,6 +122,10 @@ public class ThirdPersonMovement : MonoBehaviour
         if (rb.velocity.y < 0)
         {
             force.force = new Vector3(rb.velocity.x, rb.velocity.y * 15, rb.velocity.z); // if player is falling, fall faster
+            if (rb.velocity.y < -30)
+            {
+                rb.velocity = new Vector3 (rb.velocity.x, -30, rb.velocity.z);
+            }
         }
         //else if (rb.velocity.y > 0 && !isGrounded) force.force = new Vector3(rb.velocity.x, rb.velocity.y * -2, rb.velocity.z);
         else force.force = Vector3.zero;
@@ -115,6 +138,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
     void CalculateAirMovement()
     {
+        
         if (Input.GetKey(KeyCode.D)) // right
         {
             rb.AddForce(gameObject.transform.right * grappleScript.horizontalThrustForce * Time.deltaTime);
@@ -133,24 +157,35 @@ public class ThirdPersonMovement : MonoBehaviour
         }
         if (sprint)
         {
+            reachedMaxWalkAirXSpeed = false;
+            reachedMaxWalkAirZSpeed = false;
             if (Mathf.Abs(rb.velocity.x) > stats.playerRunningSpeed)
             {
-                rb.velocity = new Vector3(Mathf.Sign(rb.velocity.x) * stats.playerRunningSpeed, rb.velocity.y, rb.velocity.z);
-            }
+                reachedMaxRunAirXSpeed = true;
+                //rb.velocity = new Vector3(Mathf.Sign(rb.velocity.x) * stats.playerRunningSpeed, rb.velocity.y, rb.velocity.z);
+            } else reachedMaxRunAirXSpeed = false;
             if (Mathf.Abs(rb.velocity.z) > stats.playerRunningSpeed)
             {
-                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, Mathf.Sign(rb.velocity.z) * stats.playerRunningSpeed);
+                reachedMaxRunAirZSpeed = true;
+                //rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, Mathf.Sign(rb.velocity.z) * stats.playerRunningSpeed);
             }
+            else reachedMaxRunAirZSpeed = false;
         } else if (!sprint)
         {
+            reachedMaxRunAirXSpeed = false;
+            reachedMaxRunAirZSpeed = false;
             if (Mathf.Abs(rb.velocity.x) > stats.playerWalkingSpeed)
             {
-                rb.velocity = new Vector3(Mathf.Sign(rb.velocity.x) * stats.playerWalkingSpeed, rb.velocity.y, rb.velocity.z);
+                reachedMaxWalkAirXSpeed = true;
+                //rb.velocity = new Vector3(Mathf.Sign(rb.velocity.x) * stats.playerWalkingSpeed, rb.velocity.y, rb.velocity.z);
             }
+            else reachedMaxWalkAirXSpeed = false;
             if (Mathf.Abs(rb.velocity.z) > 12)
             {
-                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, Mathf.Sign(rb.velocity.z) * stats.playerWalkingSpeed);
+                reachedMaxWalkAirZSpeed = true;
+                //rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, Mathf.Sign(rb.velocity.z) * stats.playerWalkingSpeed);
             }
+            else reachedMaxWalkAirZSpeed = false;
         }
 
     }
@@ -166,8 +201,17 @@ public class ThirdPersonMovement : MonoBehaviour
 
     void GetInput()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
+        if (!reachedMaxWalkAirXSpeed || !reachedMaxRunAirXSpeed)
+        {
+            horizontal = Input.GetAxisRaw("Horizontal");
+        }
+        else horizontal = 0;
+        if (!reachedMaxWalkAirZSpeed || !reachedMaxRunAirZSpeed)
+        {
+            vertical = Input.GetAxisRaw("Vertical");
+        }
+        else vertical = 0;
+        
         jump = Input.GetButtonDown("Jump");
         jumpHeld = Input.GetAxisRaw("Jump");
         sprint = Input.GetKey(KeyCode.LeftShift);
