@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 public class EyeBall : Enemy
 {
+    public ScoreManager SM;
     public EventAnimManager eAM;
     public float flyingOffset;
     [HideInInspector] 
@@ -23,7 +24,7 @@ public class EyeBall : Enemy
 
     private void Start()
     {
-       
+        SM = GameObject.FindGameObjectWithTag("ScoreSystem").GetComponent<ScoreManager>();
         setup();// do all the setup 
     }
     public override void setup()
@@ -119,7 +120,7 @@ public class EyeBall : Enemy
             attackTimer += Time.deltaTime;
             if (canAttack && attackTimer >= attackCooldown)
             {
-                print("d");
+                
                
                 Instantiate(attackProjectile, RelativePosition + Vector3.down/2, Quaternion.identity);
                 //canAttack = !canAttack;
@@ -164,15 +165,17 @@ public class EyeBall : Enemy
     }
     public override void die()
     {
-        base.die();
-        if (curHealth <= 0)
+       
+        
+        if (curHealth <= 0&& currentState != State.dead)
         {
+            SM.Kill(ScoreManager.EnemyType.JellyFish);
             Animator aaaaaa = GetComponentInChildren<Animator>();
             aaaaaa.speed = 0;
             gameObject.layer = 2;
             gameObject.AddComponent<Rigidbody>();
         }
-       
+        base.die();
     }
 
 }

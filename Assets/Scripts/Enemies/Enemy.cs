@@ -94,7 +94,7 @@ public class Enemy : MonoBehaviour
     public void takeDamage(float dam)
     {
         curHealth -= dam;
-        die();
+        die();        //die checks if the enemy has zero health left
         UpdatePopUp((int)dam);
     }
 
@@ -125,13 +125,20 @@ public class Enemy : MonoBehaviour
 
     virtual public void die()
     {
-        if (curHealth <= 0)
+   
+        
+        
+        //logic for when the enemy has no health left
+        if (curHealth <= 0 && currentState != State.dead)
         {
-            print(curHealth);
             currentState = State.dead;
             //update the game manager and send this creature to the shadow realm invoke die after some time method
             StartCoroutine(GarbageMan());
             //spawn some particles maybe
+            GameManager.Instance.OnPause -= Pause;
+            GameManager.Instance.OnUnPause -= UnPause;
+            
+           
         }
     }
 

@@ -12,6 +12,9 @@ TagManager:
   - EventManeger
   - Hazmat Dude
   - Grapple
+  - ScoreSystem
+  - VictoryImage
+  - DeathImage
   layers:
   - Default
   - TransparentFX
