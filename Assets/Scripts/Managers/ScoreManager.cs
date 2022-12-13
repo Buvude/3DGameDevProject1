@@ -53,17 +53,21 @@ public class ScoreManager : MonoBehaviour
         tMPArray[1] = Line2;//tMPArray.SetValue(Line2, 1);
         tMPArray[2] = Line3;//.SetValue(Line3, 2);
         tMPArray[3] = Line4;//tMPArray.SetValue(Line4, 3);
-       StartCoroutine( FinalScoreOutput(tMPArray));
+       StartCoroutine( "FinalScoreOutput"/*(tMPArray)*/);
        
     }
-        IEnumerator  FinalScoreOutput(TextMeshProUGUI[] ArrayStuff)
+        IEnumerator  FinalScoreOutput(/*TextMeshProUGUI[] tMPArray*/)
     {
-        ArrayStuff[0].text = "fish are friedns";
+        tMPArray[0].text = "fish are friedns";
         string jellyfish, hazmatDudes, deadOrAlive, finalScore;
         jellyfish = "You have killed " + jellyFishKilled + " of those jelly fish creatures(*" + jellyFishWorth + ")\t " + (jellyFishKilled * jellyFishWorth) + " points";
+        print("Test for Victory Image 1");
         hazmatDudes = "You have killed " + hazmatDudesKilled + " of those Hazmat dudes(*" + hazmatDudesWorth + ")\t " + (hazmatDudesKilled * hazmatDudesWorth) + " points";
+        print("Test for Victory Image 2");
         if (vicotry)
         {
+            GameObject.FindGameObjectWithTag("UI").gameObject.GetComponentInChildren<AudioSource>().gameObject.SetActive(true);
+            print("Test for Victory Image 3");
             /* Image[] temp;
              temp= GameObject.FindGameObjectWithTag("UI").GetComponentsInChildren<Image>();*/
             /*foreach(Image tempImage in temp)
@@ -80,6 +84,8 @@ public class ScoreManager : MonoBehaviour
         }
         else
         {
+            GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<MeshCollider>().gameObject.SetActive(true);
+            print("Test for Victory Image 4");
             /*  Image[] temp;*/
             /*temp = GameObject.FindGameObjectWithTag("UI").GetComponentsInChildren<Image>();
             foreach (Image tempImage in temp)
@@ -91,18 +97,18 @@ public class ScoreManager : MonoBehaviour
                     break;
                 }
             }*/
-            
+
             deadOrAlive = "Unfortunatly you died trying to escape... You do not get any points for this";
         }
         finalScore = "Your final score is...\t" + totalScore;
-        print(ArrayStuff[0].text);
-        ArrayStuff[0].text = jellyfish;
+        print(tMPArray[0].text);
+        tMPArray[0].text = jellyfish;
         yield return new WaitForSeconds(1f);
-        ArrayStuff[1].text = hazmatDudes;
+        tMPArray[1].text = hazmatDudes;
         yield return new WaitForSeconds(1f);
-        ArrayStuff[2].text = deadOrAlive;
+        tMPArray[2].text = deadOrAlive;
         yield return new WaitForSeconds(1f);
-        ArrayStuff[3].text = finalScore;
+        tMPArray[3].text = finalScore;
 
     }
 }
