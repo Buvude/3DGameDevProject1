@@ -11,6 +11,7 @@ TagManager:
   - meleePivot
   - EventManeger
   - Hazmat Dude
+  - Grapple
   layers:
   - Default
   - TransparentFX

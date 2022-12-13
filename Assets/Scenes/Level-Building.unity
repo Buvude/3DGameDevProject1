@@ -22597,11 +22597,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8709763176295177029, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 8.693314e-16
+      value: -1.7386628e-15
       objectReference: {fileID: 0}
     - target: {fileID: 8709763176295177029, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -3.60311e-17
+      value: 2.941068e-16
       objectReference: {fileID: 0}
     - target: {fileID: 8979432947373058269, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_XDamping
@@ -23270,22 +23270,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1830916588, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.07
-      objectReference: {fileID: 0}
     - target: {fileID: 2057247937, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
       propertyPath: CamTransform
       value: 
       objectReference: {fileID: 499003790}
-    - target: {fileID: 2057247937, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
-      propertyPath: knockBackPower
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 2057247937, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
-      propertyPath: shotGunReloadSpeed
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 2813164131429111105, guid: fb5ad67f6f32200459215c97b2c2c9d0, type: 3}
       propertyPath: m_Name
       value: Player
