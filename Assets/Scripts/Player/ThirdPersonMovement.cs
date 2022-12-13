@@ -43,7 +43,6 @@ public class ThirdPersonMovement : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(rb.velocity.y);
         if (Input.GetKeyDown(KeyCode.P))
         {
             Cursor.visible = true;
