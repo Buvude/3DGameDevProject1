@@ -20,7 +20,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: cc53c0d0c41a3b942905279cd0fccbfa, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: 3593570a302a2eb4981e9cf3ed508937, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -62,7 +62,7 @@ AnimatorStateMachine:
     m_Position: {x: 380, y: 20, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5621666742073403581}
-    m_Position: {x: 381, y: 106.5, z: 0}
+    m_Position: {x: 380, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4077228287696290549}
     m_Position: {x: 640, y: 20, z: 0}
@@ -85,7 +85,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Model_HazmatGoon
+  m_Name: Model_HazmatGoon new
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
@@ -122,7 +122,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: 454181476c466044e9138b2f9a9ec622, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: d8d4739557eaf0a4fa94a8aed83087a5, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -174,7 +174,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 0}
+  m_Motion: {fileID: -203655887218126122, guid: 34bd83dc9d6c4f84c887e9d2dcb5998e, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
