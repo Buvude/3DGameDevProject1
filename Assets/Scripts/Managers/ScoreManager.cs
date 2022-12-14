@@ -63,9 +63,9 @@ public class ScoreManager : MonoBehaviour
     {
         tMPArray[0].text = "fish are friedns";
         string jellyfish, hazmatDudes, deadOrAlive, finalScore;
-        jellyfish = "You have killed " + jellyFishKilled + " of those jelly fish creatures(*" + jellyFishWorth + ")\t " + (jellyFishKilled * jellyFishWorth) + " points";
+        jellyfish = "You killed " + jellyFishKilled + " jellyfish(*" + jellyFishWorth + ")\n " + (jellyFishKilled * jellyFishWorth) + " points";
         print("Test for Victory Image 1");
-        hazmatDudes = "You have killed " + hazmatDudesKilled + " of those Hazmat dudes(*" + hazmatDudesWorth + ")\t " + (hazmatDudesKilled * hazmatDudesWorth) + " points";
+        hazmatDudes = "You killed " + hazmatDudesKilled + " hazmats(*" + hazmatDudesWorth + ")\n " + (hazmatDudesKilled * hazmatDudesWorth) + " points";
         print("Test for Victory Image 2");
         if (vicotry)
         {
@@ -82,7 +82,7 @@ public class ScoreManager : MonoBehaviour
                     break;
                 }
             }*/
-            deadOrAlive = "You have manged to survie! You get " + VictoryWorth + " points as a reward!";
+            deadOrAlive = "You survived! + " + VictoryWorth + " points!";
             totalScore += VictoryWorth;
         }
         else
@@ -101,9 +101,9 @@ public class ScoreManager : MonoBehaviour
                 }
             }*/
 
-            deadOrAlive = "Unfortunatly you died trying to escape... You do not get any points for this";
+            deadOrAlive = "You died.";
         }
-        finalScore = "Your final score is...\t" + totalScore;
+        finalScore = "Your final score was " + totalScore;
         print(tMPArray[0].text);
         tMPArray[0].text = jellyfish;
         yield return new WaitForSeconds(1f);
