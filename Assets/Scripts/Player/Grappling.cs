@@ -160,6 +160,10 @@ public class Grappling : MonoBehaviour
                 }*/
 
     }
+    public bool IsGrappling()
+    {
+        return joint != null;
+    }
     public Vector3 GetGrapplePoint()
     {
         return grapplePoint;
