@@ -32735,15 +32735,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8709763176295177029, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.1452837
+      value: 0.14528371
       objectReference: {fileID: 0}
     - target: {fileID: 8709763176295177029, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000014743061
+      value: -1.7386628e-15
       objectReference: {fileID: 0}
     - target: {fileID: 8709763176295177029, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000021648958
+      value: 2.941068e-16
       objectReference: {fileID: 0}
     - target: {fileID: 8979432947373058269, guid: 04042a083dff5514db0ed968c5fd5f91, type: 3}
       propertyPath: m_XDamping
@@ -33360,8 +33360,8 @@ MonoBehaviour:
   Door: {fileID: 1447814127}
   MainCam: {fileID: 1643871531}
   CutsceneCam: {fileID: 593134769}
-  SM: {fileID: 0}
-  MM: {fileID: 0}
+  SM: {fileID: 322744581}
+  MM: {fileID: 619640292}
 --- !u!1001 &1450787119
 PrefabInstance:
   m_ObjectHideFlags: 0

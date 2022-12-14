@@ -55,7 +55,7 @@ public class SceneManagement : MonoBehaviour
             }
             
             //Testing purposes only, comment out or delete before fianl build
-            if (Input.GetKey(KeyCode.V)&& Input.GetKey(KeyCode.I)&& Input.GetKey(KeyCode.C))
+            /*if (Input.GetKey(KeyCode.V)&& Input.GetKey(KeyCode.I)&& Input.GetKey(KeyCode.C))
             {
                 scoMan.vicotry = true;
                 SceneManager.LoadScene(2);
@@ -64,7 +64,7 @@ public class SceneManagement : MonoBehaviour
             {
                 scoMan.vicotry = false;
                 SceneManager.LoadScene(2);
-            }
+            }*/
             //end of testing stuff
         }
         if (curScene.buildIndex == 2)
@@ -78,6 +78,10 @@ public class SceneManagement : MonoBehaviour
                 scoMan.startFinalCalcMethod(Line1, Line2, Line3, Line4);
             }
         }
+    }
+    public void resetFromSM()
+    {
+        scoMan.ResetVictory();
     }
     public void quitGame()
     {

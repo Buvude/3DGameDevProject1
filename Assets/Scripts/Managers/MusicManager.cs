@@ -21,7 +21,7 @@ public class MusicManager : MonoBehaviour
     void Update()
     {
         //COMMENT OUT OF FINAL BUILD, THIS IS FOR TESTING PURPOSES ONLY
-        if (Input.GetKeyDown(KeyCode.Alpha8))
+        /*if (Input.GetKeyDown(KeyCode.Alpha8))
         {
             backToNormal();
         }
@@ -32,7 +32,7 @@ public class MusicManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             FranticTrack();
-        }
+        }*/
     }
 
     private void OnCollisionEnter(Collision collision)
