@@ -10,6 +10,7 @@ public class EventAnimManager : MonoBehaviour
     public Camera MainCam, CutsceneCam;
     internal static bool doorOpen = false;
     public SceneManagement SM;
+    public MusicManager MM;
     // Start is called before the first frame update
     void Start()
     {
@@ -60,6 +61,7 @@ public class EventAnimManager : MonoBehaviour
         CutsceneCam.GetComponent<Camera>().enabled = false;
         CutsceneCam.GetComponent<AudioListener>().enabled = false;
         MainCam.gameObject.GetComponent<AudioListener>().enabled = true;
+        MM.FranticTrack();
     }
     private void OnTriggerEnter(Collider other)
     {
