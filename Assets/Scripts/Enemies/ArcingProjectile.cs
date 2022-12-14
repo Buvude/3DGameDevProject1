@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class ArcingProjectile : MonoBehaviour
 {
@@ -94,9 +95,18 @@ public class ArcingProjectile : MonoBehaviour
         }
 
         Destroy(spawnedWarning);
-        Destroy(gameObject);
+        StartCoroutine(delayDestory());
     }
 
+    IEnumerator delayDestory()
+    {
+        //turn off visual
+        GetComponent<MeshRenderer>().enabled = false;
+        //play sound
+        GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(2);
+        Destroy(gameObject);
+    }
 
     private void OnDrawGizmos()
     {

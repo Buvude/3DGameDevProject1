@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6765594227767123807}
   - component: {fileID: 6765594227767123803}
   - component: {fileID: 6888162097412210425}
+  - component: {fileID: 8472158465720058242}
   m_Layer: 3
   m_Name: HazMat Lobber Enemy
   m_TagString: Hazmat Dude
@@ -126,12 +127,18 @@ MonoBehaviour:
   paused: 0
   damagePopUp: {fileID: 8041029152652835770, guid: 104ab53f4d3e19d41a8548be481e51ef, type: 3}
   currentState: 0
+  SM: {fileID: 0}
   eAM: {fileID: 0}
   wanderRadius: 30
   wanderTime: 2
   attackCooldown: 2
   attackProjectile: {fileID: 5879683832163022515, guid: 686a5f653689cd74696bd91769a2b46b, type: 3}
   LobStartPos: {fileID: 8415993258258417673}
+  detect1: {fileID: 8300000, guid: f184a09d6df0af247b46951826b28921, type: 3}
+  detect2: {fileID: 8300000, guid: edb4f4f79513d43408edcf904fbe0a73, type: 3}
+  deathSound1: {fileID: 8300000, guid: 796fd93f0ee0b2445a1fb60915be81f2, type: 3}
+  deathSound2: {fileID: 8300000, guid: 97b3ba947961da04ea305e02264edee1, type: 3}
+  deathSound3: {fileID: 8300000, guid: a96c5d461c5ffef4193212f84ebe01d7, type: 3}
 --- !u!195 &6888162097412210425
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -154,6 +161,102 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
+--- !u!82 &8472158465720058242
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6765594227767123806}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8415993258258417672
 GameObject:
   m_ObjectHideFlags: 0
