@@ -31,6 +31,8 @@ public class Weaponry : MonoBehaviour
     private bool shottyReloading = false;
     private bool paused;
 
+    public bool justShot;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +65,7 @@ public class Weaponry : MonoBehaviour
         //on Right Click
         if (Input.GetKeyDown(KeyCode.Mouse1)  && shotGunCurrentAmmo >0)
         {
+            justShot = true;
             shotGunCurrentAmmo--;
             sfxMG.ShotGunFired();
             //do a cone attack thing
@@ -100,6 +103,7 @@ public class Weaponry : MonoBehaviour
         //On left click
         if (Input.GetKeyDown(KeyCode.Mouse0) && !pistolReloading)
         {
+            justShot = true;
             sfxMG.PistolFired();
             bulletEffect.Play();
 

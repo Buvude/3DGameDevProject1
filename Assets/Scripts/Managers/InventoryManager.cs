@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    public AudioSource collectable;
     private bool triggeredEndingCutscene=false;
     internal EventAnimManager eAM;
     public TextMeshProUGUI inventorytxt;
@@ -37,6 +38,7 @@ public class InventoryManager : MonoBehaviour
         {
             MapPickup();
             Destroy(other.gameObject);
+            collectable.Play();
         }
         else if (other.gameObject.layer == enemyDrop)
         {

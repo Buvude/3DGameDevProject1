@@ -6,12 +6,16 @@ public class PlayerAnims : MonoBehaviour
 {
     Animator animator;
     ThirdPersonMovement player;
+    Weaponry weapon;
     bool coolDownActive;
     Rigidbody playerRb;
     MeleeAttack punchRef;
     public float animDuration = .958f;
+    public float shootDuration = .5f;
     float punchTimer;
     public float hurtTimer;
+    float shootTimer;
+    bool shooting;
     bool punching;
     public bool tookDmg;
     // Start is called before the first frame update
@@ -21,6 +25,7 @@ public class PlayerAnims : MonoBehaviour
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonMovement>();
         playerRb = player.GetComponent<Rigidbody>();
+        weapon = FindObjectOfType<Weaponry>();
     }
 
     // Update is called once per frame
@@ -47,6 +52,23 @@ public class PlayerAnims : MonoBehaviour
             animator.SetBool("isPunching", false);
         }
 
+        if (weapon.justShot)
+        {
+            shooting = true;
+            weapon.justShot = false;
+            shootTimer = shootDuration;
+        }
+        if (shooting)
+        {
+            animator.SetBool("isShoot", true);
+            shootTimer -= Time.deltaTime;
+        }
+        if (shootTimer < 0)
+        {
+            shooting = false;
+            animator.SetBool("isShoot", false);
+        }
+
 
         if (punchRef.attackCooldTimer < 0)
         {
@@ -71,7 +93,6 @@ public class PlayerAnims : MonoBehaviour
 
         if (player.isGrounded == true)
         {
-            /*Debug.Log("test");*/
             animator.SetBool("grounded", true);
         }
         else animator.SetBool("grounded", false);

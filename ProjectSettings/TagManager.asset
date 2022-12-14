@@ -11,9 +11,11 @@ TagManager:
   - meleePivot
   - EventManeger
   - Hazmat Dude
+  - Grapple
   - ScoreSystem
   - VictoryImage
   - DeathImage
+  - UI
   layers:
   - Default
   - TransparentFX
@@ -26,7 +28,7 @@ TagManager:
   - MapItem
   - EnemyDropItem
   - Unwalkable
-  - 
+  - Exit
   - 
   - 
   - 

@@ -8,6 +8,9 @@ public class EventAnimManager : MonoBehaviour
 /*    public List<Enemy> enemyList = new List<Enemy>();
 */    public Animator Door;
     public Camera MainCam, CutsceneCam;
+    internal static bool doorOpen = false;
+    public SceneManagement SM;
+    public MusicManager MM;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +19,7 @@ public class EventAnimManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
+    { 
     }
     public void Pause()
     {
@@ -42,16 +44,34 @@ public class EventAnimManager : MonoBehaviour
     public void exitOpen()
     {
         Pause();
-       /* Time.deltaTime.Equals(0f);*/
+        doorOpen = true;
+        /* Time.deltaTime.Equals(0f);*/
         MainCam.gameObject.GetComponent<Camera>().enabled = false;
         CutsceneCam.GetComponent<Camera>().enabled = true;
+        CutsceneCam.GetComponent<AudioListener>().enabled = true;
+        MainCam.gameObject.GetComponent<AudioListener>().enabled = false;
+        CutsceneCam.GetComponent<AudioSource>().Play();
         Door.SetTrigger("DoorOpen");
     }
     public void exitOpenEndCutscene()
     {
         Unpause();
+        /*doorOpen = true;*/
         MainCam.gameObject.GetComponent<Camera>().enabled = true;
         CutsceneCam.GetComponent<Camera>().enabled = false;
-        Time.deltaTime.Equals(.02f);
+        CutsceneCam.GetComponent<AudioListener>().enabled = false;
+        MainCam.gameObject.GetComponent<AudioListener>().enabled = true;
+        MM.FranticTrack();
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        
+        if (other.gameObject.CompareTag("Player") && doorOpen)
+        {
+            print("Player has entered");
+            GameObject.FindGameObjectWithTag("ScoreSystem").GetComponent<ScoreManager>().vicotry = true;
+            SM.endRun();
+        }
+    }
+
 }
