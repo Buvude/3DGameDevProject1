@@ -15283,6 +15283,7 @@ MonoBehaviour:
   shotGunMaxAmmo: 2
   shotGunCurrentAmmo: 0
   shotGunReloadSpeed: 4
+  justShot: 0
 --- !u!114 &3449457695341364853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15881,6 +15882,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CHARACTER_RIG(1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2866621852552652557, guid: 18764b8146f222d409f4ae76a0d96db8, type: 3}
+      propertyPath: m_Name
+      value: rightHand
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 18764b8146f222d409f4ae76a0d96db8, type: 3}
       propertyPath: m_Controller
       value: 
@@ -15912,3 +15917,17 @@ MonoBehaviour:
   animDuration: 0.958
   hurtTimer: 0
   tookDmg: 0
+--- !u!114 &1726825875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3287486231689055462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e8ef23617dd5c04fa3dc64ce6428abc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grappling: {fileID: 3449457695341364853}
+  other: {fileID: 0}
