@@ -48,6 +48,9 @@ public class ScoreManager : MonoBehaviour
    public void ResetVictory()
     {
         vicotry = false;
+        totalScore = 0;
+        jellyFishKilled = 0;
+        hazmatDudesKilled = 0;
     }
     public void startFinalCalcMethod(TextMeshProUGUI Line1, TextMeshProUGUI Line2, TextMeshProUGUI Line3, TextMeshProUGUI Line4)
     {
