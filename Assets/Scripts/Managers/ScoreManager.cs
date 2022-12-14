@@ -45,7 +45,10 @@ public class ScoreManager : MonoBehaviour
                 break;
         }
     }
-   
+   public void ResetVictory()
+    {
+        vicotry = false;
+    }
     public void startFinalCalcMethod(TextMeshProUGUI Line1, TextMeshProUGUI Line2, TextMeshProUGUI Line3, TextMeshProUGUI Line4)
     {
         // TextMeshProUGUI[] tMPArray = new TextMeshProUGUI[4];
@@ -66,7 +69,7 @@ public class ScoreManager : MonoBehaviour
         print("Test for Victory Image 2");
         if (vicotry)
         {
-            GameObject.FindGameObjectWithTag("UI").gameObject.GetComponentInChildren<AudioSource>().gameObject.SetActive(true);
+            GameObject.FindGameObjectWithTag("VictoryImage").GetComponent<Image>().enabled = true;
             print("Test for Victory Image 3");
             /* Image[] temp;
              temp= GameObject.FindGameObjectWithTag("UI").GetComponentsInChildren<Image>();*/
@@ -84,7 +87,7 @@ public class ScoreManager : MonoBehaviour
         }
         else
         {
-            GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<MeshCollider>().gameObject.SetActive(true);
+            GameObject.FindGameObjectWithTag("DeathImage").GetComponent<Image>().enabled = true;
             print("Test for Victory Image 4");
             /*  Image[] temp;*/
             /*temp = GameObject.FindGameObjectWithTag("UI").GetComponentsInChildren<Image>();
