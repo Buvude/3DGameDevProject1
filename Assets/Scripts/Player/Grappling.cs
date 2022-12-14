@@ -7,8 +7,7 @@ public class Grappling : MonoBehaviour
     GameObject currentEnemyGrapped;
     private Rigidbody rb;
     private Transform orientation;
-    public LineRenderer lr;
-    private Vector3 grapplePoint;
+    public Vector3 grapplePoint;
     public LayerMask whatIsGrappleable;
     public LayerMask whatIsEnemy;
     public Transform gunTip, camera;
@@ -61,10 +60,7 @@ public class Grappling : MonoBehaviour
             CalculateGrappleMovement();
         }
     }
-    private void LateUpdate()
-    {
-        DrawRope(); // draw rope in late update so it doesn't lag behind the gun
-    }
+
 
     private void StartGrapple()
     {
@@ -84,7 +80,6 @@ public class Grappling : MonoBehaviour
             joint.damper = grappleJointDamper;
             joint.massScale = grappleJointMassScale;
 
-            lr.positionCount = 2; 
         } else if (Physics.Raycast(camera.position, camera.forward, out hit, maxGrappleDistance, whatIsEnemy)) // check if the object is an enemy
         {
             enemyGrappled = true;
@@ -102,20 +97,14 @@ public class Grappling : MonoBehaviour
             joint.damper = grappleJointDamper;
             joint.massScale = grappleJointMassScale;
 
-            lr.positionCount = 2;
         }
     }
 
-    void DrawRope()
-    {
-        if (!joint) return;
-        lr.SetPosition(0, gunTip.position);
-        lr.SetPosition(1, grapplePoint);
-    }
+
     private void EndGrapple()
     {
         enemyGrappled = false;
-        lr.positionCount = 0;
+        isGrappling = false;
         Destroy(joint);
     }
     private void CalculateGrappleMovement()
@@ -145,7 +134,6 @@ public class Grappling : MonoBehaviour
         }
         if (currentEnemyGrapped == null && enemyGrappled)
         {
-            Debug.Log("Accessed");
             EndGrapple();
             isGrappling = false;
             enemyGrappled = false;
@@ -157,19 +145,27 @@ public class Grappling : MonoBehaviour
             joint.maxDistance = distanceFromPoint * grappleMaxDist;
             joint.minDistance = distanceFromPoint * grappleMinDist;
         }
-        
 
-        
+
+
 
 
         //extend cable with E (idk if we'll keep this in final but we could)
-/*        if (Input.GetKey(KeyCode.E))
-        {
-            float extendedDistanceFromPoint = Vector3.Distance(transform.position, grapplePoint) + extendCableSpeed;
+        /*        if (Input.GetKey(KeyCode.E))
+                {
+                    float extendedDistanceFromPoint = Vector3.Distance(transform.position, grapplePoint) + extendCableSpeed;
 
-            joint.maxDistance = extendedDistanceFromPoint * grappleMaxDist;
-            joint.minDistance = extendedDistanceFromPoint * grappleMinDist;
-        }*/
+                    joint.maxDistance = extendedDistanceFromPoint * grappleMaxDist;
+                    joint.minDistance = extendedDistanceFromPoint * grappleMinDist;
+                }*/
 
+    }
+    public bool IsGrappling()
+    {
+        return joint != null;
+    }
+    public Vector3 GetGrapplePoint()
+    {
+        return grapplePoint;
     }
 }

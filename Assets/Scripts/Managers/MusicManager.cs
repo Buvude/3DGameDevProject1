@@ -109,7 +109,7 @@ public class MusicManager : MonoBehaviour
         }
         while (FranticBGMPlayer.volume < .30f)
         {
-            bGMPlayer.volume += .01f;
+            FranticBGMPlayer.volume += .01f;
             yield return new WaitForEndOfFrame();
         }
     }

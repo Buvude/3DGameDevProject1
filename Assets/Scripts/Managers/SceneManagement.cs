@@ -71,6 +71,8 @@ public class SceneManagement : MonoBehaviour
         {
             if (!startedFinalCalc)
             {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
                 print("change");
                 startedFinalCalc = true;
                 scoMan.startFinalCalcMethod(Line1, Line2, Line3, Line4);
