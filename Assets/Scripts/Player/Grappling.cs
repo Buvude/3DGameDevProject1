@@ -46,7 +46,7 @@ public class Grappling : MonoBehaviour
             }
             if (Physics.Raycast(camera.position, camera.forward, out hit, maxGrappleDistance, whatIsEnemy )) // check if the object is grappleable
             {
-                Debug.Log("Hello");
+                GetComponent<AudioSource>().Play();
                 StartGrapple();
                 isGrappling = true;
             }
