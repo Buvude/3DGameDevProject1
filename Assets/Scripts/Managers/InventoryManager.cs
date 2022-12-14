@@ -60,7 +60,6 @@ public class InventoryManager : MonoBehaviour
 
     public void UpdateInventoryText()
     {
-        inventorytxt.text = "Map collectables: " + mapNum + "/" + mapNumMax + "\n" +
-            "Enemy drop collectables" + eDropNum + "/" + eDropNumMax;
+        inventorytxt.text = "Collectibles: " + mapNum + "/" + mapNumMax;
     }
 }

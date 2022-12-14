@@ -17,11 +17,13 @@ public class ArcingProjectile : MonoBehaviour
 
     public GameObject warningMarker;
     GameObject spawnedWarning;
+    bool notArrived;
 
     Vector3 startPos;
 
     void Start()
     {
+        notArrived = true;
         stats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         // Cache our start position, which is really the only thing we need
         // (in addition to our current position, and the target).
@@ -42,7 +44,7 @@ public class ArcingProjectile : MonoBehaviour
     }
     void Update()
     {
-
+        Debug.Log(notArrived);
         // Compute the next position, with arc added in
         float x0 = startPos.x;
         float x1 = targetPos.x;
@@ -76,11 +78,12 @@ public class ArcingProjectile : MonoBehaviour
         float proximity =Vector2.Distance(v1,v2);
 
         // Do something when we reach the target 
-        if (nextPos == targetPos || proximity<.01f) Arrived();
+        if (nextPos == targetPos || proximity < .01f && notArrived) Arrived();
     }
 
     void Arrived()
     {
+        notArrived = false;
         //do an explosion check.. player doesnt have any health or what not yet though
         Collider[] caughtInExplosion;
         caughtInExplosion = Physics.OverlapSphere(targetPos, explosionRadius);
@@ -95,13 +98,18 @@ public class ArcingProjectile : MonoBehaviour
         }
 
         Destroy(spawnedWarning);
+        //Destroy(this.gameObject);
+        
         StartCoroutine(delayDestory());
+        this.enabled = false;
     }
 
     IEnumerator delayDestory()
     {
+
         //turn off visual
         GetComponent<MeshRenderer>().enabled = false;
+        
         //play sound
         GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(2);
