@@ -15088,7 +15088,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1830916587}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.04, z: 0}
+  m_LocalPosition: {x: 0, y: 4.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15159,6 +15159,7 @@ GameObject:
   - component: {fileID: 2057247937}
   - component: {fileID: 3449457695341364853}
   - component: {fileID: 3449457695341364858}
+  - component: {fileID: 2123744161}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -15278,10 +15279,10 @@ MonoBehaviour:
   pistolMaxAmmo: 6
   pistolCurrentAmmo: 0
   pistolReloadSpeed: 1.3
-  knockBackPower: 65
+  knockBackPower: 200
   shotGunMaxAmmo: 2
   shotGunCurrentAmmo: 0
-  shotGunReloadSpeed: 2
+  shotGunReloadSpeed: 4
 --- !u!114 &3449457695341364853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15294,7 +15295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 386ec8dee9d865c48adfcd46beb46f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lr: {fileID: 8893501645921605597}
+  grapplePoint: {x: 0, y: 0, z: 0}
   whatIsGrappleable:
     serializedVersion: 2
     m_Bits: 32768
@@ -15331,6 +15332,49 @@ MonoBehaviour:
   playerWalkingSpeed: 10
   playerRunningSpeed: 15
   playerJumpForce: 60
+--- !u!114 &2123744161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2813164131429111105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41e009bb67c1c94479a2fbb8de23460d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grapplingGun: {fileID: 3449457695341364853}
+  quality: 100
+  damper: 14
+  strength: 800
+  velocity: 15
+  waveCount: 3
+  waveHeight: 3
+  affectCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.008621216
+      value: 1
+      inSlope: 1.5595864
+      outSlope: 1.5595864
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.17027712
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &3040041087796611747
 GameObject:
   m_ObjectHideFlags: 0
@@ -15599,7 +15643,7 @@ GameObject:
   - component: {fileID: 8893501645921605597}
   m_Layer: 0
   m_Name: Grapple
-  m_TagString: Untagged
+  m_TagString: Grapple
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
