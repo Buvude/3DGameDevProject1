@@ -15,6 +15,7 @@ TagManager:
   - ScoreSystem
   - VictoryImage
   - DeathImage
+  - UI
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - MapItem
   - EnemyDropItem
   - Unwalkable
-  - 
+  - Exit
   - 
   - 
   - 
