@@ -88,6 +88,8 @@ public class EnemyManager : Manager<EnemyManager>
             {
                 //remove it from possible enemies to spawn
                 SpawnEnemyList.RemoveAt(rand);
+                if (SpawnEnemyList.Count <= 0)//if there are no more enemies left in the enemies availiable break
+                    break;
                 continue;
             }
             else

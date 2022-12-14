@@ -22,6 +22,10 @@ public class EyeBall : Enemy
     public GameObject attackProjectile;
     public Vector3 RelativePosition;
 
+    //sound bytes for this enemy
+    public AudioClip attackSound, moveSound, deathSound;
+
+    private AudioSource AudioPlayer;
     private void Start()
     {
         SM = GameObject.FindGameObjectWithTag("ScoreSystem").GetComponent<ScoreManager>();
@@ -39,6 +43,7 @@ public class EyeBall : Enemy
         curHealth = maxHealth;
         Animator aaaaaa = GetComponentInChildren<Animator>();
         aaaaaa.speed = Random.Range(.9f, 1.1f);
+        AudioPlayer = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -74,6 +79,8 @@ public class EyeBall : Enemy
 
         
     }
+
+    //what happens when this is pause and or unpaused
     public override void onPauseFunc()
     {
         base.onPauseFunc();
@@ -94,6 +101,8 @@ public class EyeBall : Enemy
     //behaviour specific to the Jellyfish
     public void JellyAI()
     {
+        AudioPlayer.clip = moveSound;
+        AudioPlayer.Play();
         attackTimer += Time.deltaTime;
         Vector3 playerPosIgnoreY = new Vector3(playerLocation.position.x, 0, playerLocation.position.z);
         float distanceToPlayer = Vector3.Distance(transform.parent.position, playerPosIgnoreY);
@@ -120,8 +129,10 @@ public class EyeBall : Enemy
             attackTimer += Time.deltaTime;
             if (canAttack && attackTimer >= attackCooldown)
             {
-                
-               
+                //play attack sound
+                AudioPlayer.clip = attackSound;
+                AudioPlayer.Play();
+
                 Instantiate(attackProjectile, RelativePosition + Vector3.down/2, Quaternion.identity);
                 //canAttack = !canAttack;
                 attackTimer = 0;
@@ -169,6 +180,8 @@ public class EyeBall : Enemy
         
         if (curHealth <= 0&& currentState != State.dead)
         {
+            AudioPlayer.clip =deathSound;
+            AudioPlayer.Play();
             SM.Kill(ScoreManager.EnemyType.JellyFish);
             Animator aaaaaa = GetComponentInChildren<Animator>();
             aaaaaa.speed = 0;

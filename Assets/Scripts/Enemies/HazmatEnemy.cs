@@ -20,6 +20,11 @@ public class HazmatEnemy : Enemy
     public GameObject attackProjectile;
     public Transform LobStartPos;
     private Animator PizzaManDan;
+
+    public AudioClip detect1,detect2, deathSound1, deathSound2, deathSound3;
+
+    private AudioSource AudioPlayer;
+
     //initilizations 
     void OnEnable()
     {
@@ -33,6 +38,7 @@ public class HazmatEnemy : Enemy
         curHealth = maxHealth;
         //grab animation controller
         PizzaManDan = GetComponentInChildren<Animator>();
+        AudioPlayer = GetComponent<AudioSource>();
     }
 
 
@@ -117,6 +123,13 @@ public class HazmatEnemy : Enemy
             attackTimer += Time.deltaTime;
             if (canAttack && attackTimer >= attackCooldown)
             {
+                //10% chance to play a sound when tossing a nade
+                if (Random.Range(0, 100) < 10)
+                {
+                    AudioPlayer.clip = pickAttackSound();
+                    AudioPlayer.Play();
+                }
+
                 PizzaManDan.Play("Attack");
                 Instantiate(attackProjectile, LobStartPos.position, Quaternion.identity);
                 //canAttack = !canAttack;
@@ -165,9 +178,47 @@ public class HazmatEnemy : Enemy
     {
         if (curHealth <= 0 && currentState != State.dead)
         {
+            AudioPlayer.clip = pickDeathSound();
+            AudioPlayer.Play();
             SM.Kill(ScoreManager.EnemyType.HazmatDude);
             PizzaManDan.Play("Death");
         }
         base.die();
+    }
+
+    public AudioClip pickDeathSound()
+    {
+        int temp = Random.Range(0, 3);
+        switch (temp)
+        {
+            case 0:
+                return deathSound1;
+                
+            case 1:
+                return deathSound2;
+                
+            case 2:
+                return deathSound3;
+                
+            default:
+                break;
+        }
+        return deathSound3;
+    }
+    public AudioClip pickAttackSound()
+    {
+        int temp = Random.Range(0, 2);
+        switch (temp)
+        {
+            case 0:
+                return detect2;
+                
+            case 1:
+                return detect1;
+                
+            default:
+                break;
+        }
+        return detect1;
     }
 }
